@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cd ~/AppData/Local/Temp/claude/C--Users-ntdat/7083315b-74c1-47af-94ef-357d6b1d2a9c/scratchpad/profile\\n# chèn banner + badge lên đầu, thay tiêu đề chữ\\npython - <<'PY' 2>/dev/null || {\\nhe...",
-  "error": "Exit code 2\n/usr/bin/bash: line 26: warning: here-document at line 3 delimited by end-of-file (wanted `PY')\n/usr/bin/bash: eval: line 27: syntax error: unexpected end of file from `{' command on line 3",
-  "timestamp": "2026-08-18T09:00:41.716Z",
-  "retry_count": 1
-}
