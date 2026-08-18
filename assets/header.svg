@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="260" viewBox="0 0 1000 260" role="img" aria-label="Nguyen Thanh Dat — plumbing under AI developer tooling">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="55%" stop-color="#11161f"/>
+      <stop offset="100%" stop-color="#161b26"/>
+    </linearGradient>
+    <linearGradient id="wire" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97757" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#d97757" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#d97757" stop-opacity="0.25"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="260" rx="10" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="999" height="259" rx="10" fill="none" stroke="#30363d"/>
+
+  <text x="48" y="72" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="30" fill="#e6edf3" letter-spacing="0.5">Nguyen Thanh Dat</text>
+  <text x="48" y="102" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14.5" fill="#8b949e">I work on the plumbing under AI developer tooling.</text>
+  <text x="48" y="124" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14.5" fill="#8b949e">Root-cause fixes, with the regression test that proves them.</text>
+
+  <line x1="48" y1="152" x2="952" y2="152" stroke="#30363d" stroke-width="1"/>
+
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12.5">
+    <rect x="48" y="180" width="118" height="42" rx="6" fill="#161b22" stroke="#30363d"/>
+    <text x="107" y="200" fill="#e6edf3" text-anchor="middle">coding agent</text>
+    <text x="107" y="215" fill="#6e7681" text-anchor="middle">client</text>
+
+    <line x1="166" y1="201" x2="252" y2="201" stroke="#8b949e" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+    <rect x="252" y="172" width="176" height="58" rx="6" fill="#1c1206" stroke="#d97757"/>
+    <text x="340" y="195" fill="#d97757" text-anchor="middle">translation layer</text>
+    <text x="340" y="212" fill="#8b949e" text-anchor="middle" font-size="11.5">router · session · config</text>
+    <line x1="252" y1="230" x2="428" y2="230" stroke="url(#wire)" stroke-width="2"/>
+
+    <line x1="428" y1="201" x2="512" y2="201" stroke="#8b949e" stroke-width="1.4" marker-end="url(#arrow)"/>
+
+    <rect x="512" y="168" width="132" height="30" rx="5" fill="#161b22" stroke="#30363d"/>
+    <text x="578" y="188" fill="#adbac7" text-anchor="middle">Anthropic Messages</text>
+    <rect x="512" y="204" width="132" height="30" rx="5" fill="#161b22" stroke="#30363d"/>
+    <text x="578" y="224" fill="#adbac7" text-anchor="middle">OpenAI Chat</text>
+    <rect x="660" y="186" width="132" height="30" rx="5" fill="#161b22" stroke="#30363d"/>
+    <text x="726" y="206" fill="#adbac7" text-anchor="middle">OpenAI Responses</text>
+  </g>
+
+  <text x="952" y="205" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" fill="#6e7681" text-anchor="end">this is where things</text>
+  <text x="952" y="222" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" fill="#6e7681" text-anchor="end">go quietly wrong</text>
+</svg>

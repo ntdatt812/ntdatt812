@@ -1,4 +1,14 @@
-## Nguyen Thanh Dat
+<div align="center">
+
+![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
+
+[![Landed](https://img.shields.io/badge/landed-9_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-23_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+
+</div>
+
 
 I work on the plumbing under AI developer tooling — the API routers, session
 stores, and configuration managers that sit between a coding agent and the
