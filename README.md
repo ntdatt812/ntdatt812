@@ -11,7 +11,7 @@ before opening the pull request.
 
 | Project | | Work |
 |---|---|---|
-| [decolua/9router](https://github.com/decolua/9router) | ⭐25.7k | 6 commits in `main`. Hardened a client-IP trust path that accepted a spoofable header without proving it came from the socket ([`9225921`](https://github.com/decolua/9router/commit/9225921)). Fixed Gemini token accounting reading zero because usage sat inside the antigravity response envelope, and prompt-cache keys being dropped in Chat→Responses translation. |
+| [decolua/9router](https://github.com/decolua/9router) | ⭐25.7k | 6 commits in `main`. Implemented the hardening for [GHSA-5mj8-gf6m-fhw8](https://github.com/decolua/9router/security/advisories/GHSA-5mj8-gf6m-fhw8) (high) — the router decided a request was local by trusting a client-supplied `X-9r-Real-Ip` header, so anyone could send `127.0.0.1` and reach the LLM API unauthenticated. My commit [`9225921`](https://github.com/decolua/9router/commit/9225921) requires proof the address came from the socket. Fixed Gemini token accounting reading zero because usage sat inside the antigravity response envelope, and prompt-cache keys being dropped in Chat→Responses translation. |
 | [lidge-jun/opencodex](https://github.com/lidge-jun/opencodex) | ⭐10.9k | 4 pull requests merged. Made the responses path [fail closed](https://github.com/lidge-jun/opencodex/pull/1788) when a routed provider invokes a tool that was never declared; normalized tool-call ids so cross-provider history replays. |
 | [williamcachamwri/zalo-tg](https://github.com/williamcachamwri/zalo-tg) | ⭐276 | 5 pull requests merged. |
 
