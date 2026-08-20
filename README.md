@@ -2,9 +2,9 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-15_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-16_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
-[![Open](https://img.shields.io/badge/open_for_review-32_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-31_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -32,10 +32,10 @@ not counted — the figures are what `gh search prs --author ntdatt812` returns 
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **15** | Merged by maintainers of repos I don't own |
+| Pull requests merged | **16** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
-| Pull requests open | **32** | Awaiting maintainer review |
+| Pull requests open | **31** | Awaiting maintainer review |
 | Repositories | **14** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
@@ -65,6 +65,13 @@ No CVE has been assigned, and the advisory is not yet in the global GitHub Advis
 Database. Both are for the maintainer and GitHub to decide.
 
 ### Landed
+
+**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)** — AI gateway, 51.3k★.
+One pull request merged.
+
+| PR | What it does |
+| --- | --- |
+| [#10715](https://github.com/diegosouzapw/OmniRoute/pull/10715) | `POST /api/tools/agent-bridge/cert/regenerate` called `generateCert()` with no arguments, and that function short-circuits whenever both files already exist. On any machine that had started the bridge once, the endpoint was a no-op — while still answering `{ ok: true }` with the two paths, so the UI reported success and `/cert/download` kept serving the identical file. `generateCert` now takes an opt-in `{ force }`, and the regenerate route is its only caller. The other three callers only need a certificate to exist, so they keep the short-circuit and are untouched (closes [#10467](https://github.com/diegosouzapw/OmniRoute/issues/10467)). |
 
 **[decolua/9router](https://github.com/decolua/9router)** — LLM API router, 25.7k★.
 Six commits in `master`.
@@ -109,7 +116,6 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 | [garrytan/gstack](https://github.com/garrytan/gstack) | 128k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
 | [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 128k★ | [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476), [#6479](https://github.com/farion1231/cc-switch/pull/6479). |
 | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 91k★ | [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), [#3593](https://github.com/thedotmack/claude-mem/pull/3593). |
-| [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute) | 51.3k★ | [#10715](https://github.com/diegosouzapw/OmniRoute/pull/10715) — the regenerate-cert endpoint reported success without minting a new certificate (closes [#10467](https://github.com/diegosouzapw/OmniRoute/issues/10467)). |
 | [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39k★ | [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). Also [#1114](https://github.com/drawdb-io/drawdb/pull/1114), emitting the comma before inline foreign keys on SQLite export. |
 | [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 36k★ | [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) — `rpcUrl` credentials were written to the log unredacted. Also [#5588](https://github.com/tinyhumansai/openhuman/pull/5588), scrubbing credentials that carry no upper-case character, and [#5583](https://github.com/tinyhumansai/openhuman/pull/5583), a lint rule for the config boundary the frontend documents but never enforced. |
 | [nicolargo/glances](https://github.com/nicolargo/glances) | 33k★ | [#3670](https://github.com/nicolargo/glances/pull/3670) — container network stats came from a single interface, so a container with several under-reported its traffic; aggregates over all of them (closes [#3669](https://github.com/nicolargo/glances/issues/3669)). |
