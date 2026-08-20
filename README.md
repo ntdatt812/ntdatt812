@@ -2,7 +2,7 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-16_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-17_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
 [![Open](https://img.shields.io/badge/open_for_review-31_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
@@ -32,7 +32,7 @@ not counted — the figures are what `gh search prs --author ntdatt812` returns 
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **16** | Merged by maintainers of repos I don't own |
+| Pull requests merged | **17** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
 | Pull requests open | **31** | Awaiting maintainer review |
@@ -65,6 +65,13 @@ No CVE has been assigned, and the advisory is not yet in the global GitHub Advis
 Database. Both are for the maintainer and GitHub to decide.
 
 ### Landed
+
+**[github/spec-kit](https://github.com/github/spec-kit)** — spec-driven development toolkit, 130k★.
+One pull request merged.
+
+| PR | What it does |
+| --- | --- |
+| [#4182](https://github.com/github/spec-kit/pull/4182) | A workflow `condition:` written without a `{{ }}` block is never evaluated. `evaluate_expression` only substitutes `{{ … }}`, so the string comes back untouched and any non-empty text is truthy — `condition: inputs.count > 100` always takes the `then` branch, and a `while` always runs to `max_iterations`. Rejects it at validation. The scan walks every block rather than stopping at the first, so a later unterminated one is caught too, and it separates a block that is never evaluated from one the interpolator truncates and *does* evaluate, because the two need opposite advice. |
 
 **[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)** — AI gateway, 51.3k★.
 One pull request merged.
@@ -112,7 +119,7 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 
 | Project | | Pull request |
 | --- | --- | --- |
-| [github/spec-kit](https://github.com/github/spec-kit) | 130k★ | [#4182](https://github.com/github/spec-kit/pull/4182) — a workflow `condition:` written without a `{{ }}` block is never evaluated: the string comes back untouched and any non-empty text is truthy, so `condition: inputs.count > 100` always takes the `then` branch and always loops to `max_iterations`. Rejects it at validation, and the suggested correction is checked to be loadable YAML. |
+| [github/spec-kit](https://github.com/github/spec-kit) | 130k★ | [#4230](https://github.com/github/spec-kit/pull/4230) — follow-up to the above. The validator suggested a paste-ready correction for conditions that wrapping cannot repair, and each one silently inverted the condition: `"   "` became `"{{ }}"`, `inputs.name == 'abc` kept its open quote, `inputs.tags | join` raises. It now asks the evaluator whether the core parses rather than restating its grammar, and names the fault when it does not. |
 | [garrytan/gstack](https://github.com/garrytan/gstack) | 128k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
 | [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 128k★ | [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476), [#6479](https://github.com/farion1231/cc-switch/pull/6479). |
 | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 91k★ | [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), [#3593](https://github.com/thedotmack/claude-mem/pull/3593). |
