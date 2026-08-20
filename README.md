@@ -2,8 +2,9 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-11_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
-[![Open](https://img.shields.io/badge/open_for_review-28_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-14_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
+[![Open](https://img.shields.io/badge/open_for_review-33_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -22,24 +23,49 @@ all; those carry a written reproduction instead.
 
 ### Contribution record
 
-Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-08-19**,
+Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-08-20**,
 covering the preceding 12 months. "Landed" means the change is in the upstream
 default branch of a repository I do not own — as a merged pull request, or as a
-commit the maintainer cherry-picked from one.
+commit the maintainer cherry-picked from one. Private repositories are excluded.
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **11** | Merged by maintainers of repos I don't own |
-| Additional commits landed | **6** | In `decolua/9router` `main`; the PRs were closed and the work cherry-picked |
-| Pull requests open | **28** | Awaiting maintainer review |
-| Repositories | **11** | Third-party repos I've contributed to |
+| Pull requests merged | **14** | Merged by maintainers of repos I don't own |
+| Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
+| Security advisories | **1** | Published, credited as reporter |
+| Pull requests open | **33** | Awaiting maintainer review |
+| Repositories | **14** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
+
+### Security
+
+**[GHSA-w8pw-h853-frw2](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)**
+— [jdx/mise](https://github.com/jdx/mise), 32.7k★. Moderate, CVSS 4.0 **5.9**.
+Affects `<= 2026.8.7`, patched in **2026.8.9**. Reported privately, published by the
+maintainer, credited as reporter.
+
+`gitlab::get_headers` and `forgejo::get_headers` attached the caller's token to *any*
+URL they were handed. The GitHub equivalent does not — it self-gates on
+`is_github_api_url`, and `github::resolve_token` additionally refuses the release-asset
+hosts. All three are called side by side, on the same value, so the GitHub path was
+protected and the other two were not. A GitLab release asset link may name any host, so
+mise sent `Authorization: Bearer <GITLAB_TOKEN>` to hosts it does not control.
+
+What made this worth reporting rather than guessing at: the exposure is real but not
+universal. `direct_asset_url` is usually a gitlab.com permalink, so I sampled the live
+API across five projects to find where it isn't — `inkscape/inkscape` publishes a link
+whose `direct_asset_url` is `inkscape.org`. The report says plainly which parts I had
+measured, which rested on code reading, and that I had not run a network
+proof-of-concept and would not without the maintainer's agreement.
+
+No CVE has been assigned, and the advisory is not yet in the global GitHub Advisory
+Database. Both are for the maintainer and GitHub to decide.
 
 ### Landed
 
 **[decolua/9router](https://github.com/decolua/9router)** — LLM API router, 25.7k★.
-Six commits in `main`.
+Six commits in `master`.
 
 | Commit | What it does |
 | --- | --- |
@@ -51,7 +77,7 @@ Six commits in `main`.
 | [`b04c03c`](https://github.com/decolua/9router/commit/b04c03c) | Adds the Alibaba Token Plan provider (`token-plan.ap-southeast-1`). |
 
 **[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 11k★.
-Six pull requests merged.
+Nine pull requests merged.
 
 | PR | What it does |
 | --- | --- |
@@ -59,6 +85,9 @@ Six pull requests merged.
 | [#1780](https://github.com/lidge-jun/opencodex/pull/1780) | Normalizes tool-call ids so conversation history replays across providers. |
 | [#2042](https://github.com/lidge-jun/opencodex/pull/2042) | `noStructuredOutputModels` is documented, in seven locales, as an *exact* opt-out, and the Responses ingress enforces that. The native Chat passthrough matched the pre-colon prefix instead, so a `<listed>:<tag>` sibling the operator never opted out silently lost `response_format` and returned prose where JSON was expected. |
 | [#2059](https://github.com/lidge-jun/opencodex/pull/2059) | Ten rows of the Lab behavior report tested list membership with a plain `includes`, while every runtime gate they describe matches through `modelInList`, which also accepts a bare entry for a tagged id. The report disagreed with production — and it is hashed into the behavior fingerprint that keys Lab evidence. |
+| [#2085](https://github.com/lidge-jun/opencodex/pull/2085) | `resolveInputCeiling` read `modelContextWindows` and `modelMaxInputTokens` with a bare lookup, while the catalog resolves those same two maps through `modelRecordValue`, which also accepts a family entry for a tagged id. Admission gave `gpt-oss:120b` the provider-wide window instead of the `gpt-oss` family's — the documented behaviour. |
+| [#2086](https://github.com/lidge-jun/opencodex/pull/2086) | The same mismatch on the CLI side: `ocx models` built four fields with bare lookups where the proxy resolves them through `modelInList` / `modelRecordValue`, so the table operators read did not describe the runtime they were operating. |
+| [#2129](https://github.com/lidge-jun/opencodex/pull/2129) | Two Windows assertions pinned the eager-relay marker to a constant that only held before the annotations backfill became an unconditional block rewrite. Ties them to `isWin32EagerRewrite` instead, and proves the rewrite chain through the handler's own output rather than through the factory — the earlier check would have stayed green if production stopped registering it. |
 | [#1806](https://github.com/lidge-jun/opencodex/pull/1806) | Keeps an absolute POSIX sqlite home literal in POSIX service files. |
 | [#1805](https://github.com/lidge-jun/opencodex/pull/1805) | Gives the Windows test sandbox a real profile shape. |
 
@@ -74,12 +103,15 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 | Project | | Pull request |
 | --- | --- | --- |
 | [github/spec-kit](https://github.com/github/spec-kit) | 130k★ | [#4182](https://github.com/github/spec-kit/pull/4182) — a workflow `condition:` written without a `{{ }}` block is never evaluated: the string comes back untouched and any non-empty text is truthy, so `condition: inputs.count > 100` always takes the `then` branch and always loops to `max_iterations`. Rejects it at validation, and the suggested correction is checked to be loadable YAML. |
+| [garrytan/gstack](https://github.com/garrytan/gstack) | 128k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
 | [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 128k★ | [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476), [#6479](https://github.com/farion1231/cc-switch/pull/6479). |
 | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 91k★ | [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), [#3593](https://github.com/thedotmack/claude-mem/pull/3593). |
+| [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute) | 51.3k★ | [#10715](https://github.com/diegosouzapw/OmniRoute/pull/10715) — the regenerate-cert endpoint reported success without minting a new certificate (closes [#10467](https://github.com/diegosouzapw/OmniRoute/issues/10467)). |
 | [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39k★ | [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). Also [#1114](https://github.com/drawdb-io/drawdb/pull/1114), emitting the comma before inline foreign keys on SQLite export. |
-| [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 36k★ | [#5583](https://github.com/tinyhumansai/openhuman/pull/5583) — the frontend documents one place to read config from, and nothing enforced it; adds the lint rule and fixes its one violation. |
+| [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 36k★ | [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) — `rpcUrl` credentials were written to the log unredacted. Also [#5588](https://github.com/tinyhumansai/openhuman/pull/5588), scrubbing credentials that carry no upper-case character, and [#5583](https://github.com/tinyhumansai/openhuman/pull/5583), a lint rule for the config boundary the frontend documents but never enforced. |
+| [nicolargo/glances](https://github.com/nicolargo/glances) | 33k★ | [#3670](https://github.com/nicolargo/glances/pull/3670) — container network stats came from a single interface, so a container with several under-reported its traffic; aggregates over all of them (closes [#3669](https://github.com/nicolargo/glances/issues/3669)). |
 | [decolua/9router](https://github.com/decolua/9router) | 25.7k★ | 13 open, including [#3369](https://github.com/decolua/9router/pull/3369) recovering a tool result that arrived without an id, and [#3368](https://github.com/decolua/9router/pull/3368) stopping a hard-coded heap cap from overriding the operator. |
-| [lidge-jun/opencodex](https://github.com/lidge-jun/opencodex) | 11k★ | [#2077](https://github.com/lidge-jun/opencodex/pull/2077) — the same class of mismatch as [#2059](https://github.com/lidge-jun/opencodex/pull/2059), on the per-model override rows: the report read the map directly while the runtime reads it through a resolver that also falls back to the model family and folds case. |
+| [lidge-jun/opencodex](https://github.com/lidge-jun/opencodex) | 11k★ | [#2167](https://github.com/lidge-jun/opencodex/pull/2167) — a 401/403 on real traffic quarantines the native account for reauth, but the next background `/wham/usage` refresh retracted that quarantine on a 200. A usage endpoint answering 200 does not prove the account can serve Responses traffic, which still answers 403 for a workspace the token can no longer select. The account returned to rotation, failed identically, was re-marked, and `needsReauth` never settled — the symptom the original issue was filed about. |
 | [zenoamaro/react-quill](https://github.com/zenoamaro/react-quill) | 7k★ | [#1050](https://github.com/zenoamaro/react-quill/pull/1050) — replace `findDOMNode` with a ref so the editor works on React 19. |
 | [commandlineparser/commandline](https://github.com/commandlineparser/commandline) | 4.8k★ | [#953](https://github.com/commandlineparser/commandline/pull/953) — retarget the test project to net8.0 so the suite runs on current SDKs. |
 | [nestjsx/nestjs-typeorm-paginate](https://github.com/nestjsx/nestjs-typeorm-paginate) | 875★ | [#927](https://github.com/nestjsx/nestjs-typeorm-paginate/pull/927) — reject a limit of 0 instead of dividing `totalPages` by zero. |
@@ -102,6 +134,19 @@ else on the node, and it flagged `new.target.env`, which is a different
 meta-property. I reproduced each case before touching anything, then pinned the
 boundary with a test that reads the selector out of the shipped config rather
 than restating it. Fixes and tests the same day, in both cases.
+
+Two recent ones are worth stating because I had them wrong first. On
+[opencodex #2129](https://github.com/lidge-jun/opencodex/pull/2129) a maintainer and
+an automated reviewer independently made the same point: my test asserted only that
+a rewrite factory returns a function, which would have stayed green in exactly the
+case it existed to catch. On
+[#2167](https://github.com/lidge-jun/opencodex/pull/2167) an automated review found
+that my fix keyed off a flag carrying two meanings, so a retry could launder a
+background refresh into an operator one — a real hole, and my first regression test
+for it asserted the wrong thing and failed. Both are corrected in the pull requests,
+with the reasoning left visible rather than quietly rewritten. I now mutation-check
+each test against the specific defect it claims to prevent, and put that table in
+the pull request.
 
 I've also offered to take on verification work rather than only sending patches:
 [claude-mem #3606](https://github.com/thedotmack/claude-mem/issues/3606#issuecomment-5325893081)
