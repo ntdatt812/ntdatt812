@@ -2,9 +2,9 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-14_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-15_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
-[![Open](https://img.shields.io/badge/open_for_review-33_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-32_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -26,14 +26,16 @@ all; those carry a written reproduction instead.
 Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-08-20**,
 covering the preceding 12 months. "Landed" means the change is in the upstream
 default branch of a repository I do not own — as a merged pull request, or as a
-commit the maintainer cherry-picked from one. Private repositories are excluded.
+commit the maintainer cherry-picked from one. Pull requests in my own repositories are
+not counted — the figures are what `gh search prs --author ntdatt812` returns once
+`ntdatt812/*` is excluded.
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **14** | Merged by maintainers of repos I don't own |
+| Pull requests merged | **15** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
-| Pull requests open | **33** | Awaiting maintainer review |
+| Pull requests open | **32** | Awaiting maintainer review |
 | Repositories | **14** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
@@ -77,7 +79,7 @@ Six commits in `master`.
 | [`b04c03c`](https://github.com/decolua/9router/commit/b04c03c) | Adds the Alibaba Token Plan provider (`token-plan.ap-southeast-1`). |
 
 **[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 11k★.
-Nine pull requests merged.
+Ten pull requests merged.
 
 | PR | What it does |
 | --- | --- |
@@ -88,6 +90,7 @@ Nine pull requests merged.
 | [#2085](https://github.com/lidge-jun/opencodex/pull/2085) | `resolveInputCeiling` read `modelContextWindows` and `modelMaxInputTokens` with a bare lookup, while the catalog resolves those same two maps through `modelRecordValue`, which also accepts a family entry for a tagged id. Admission gave `gpt-oss:120b` the provider-wide window instead of the `gpt-oss` family's — the documented behaviour. |
 | [#2086](https://github.com/lidge-jun/opencodex/pull/2086) | The same mismatch on the CLI side: `ocx models` built four fields with bare lookups where the proxy resolves them through `modelInList` / `modelRecordValue`, so the table operators read did not describe the runtime they were operating. |
 | [#2129](https://github.com/lidge-jun/opencodex/pull/2129) | Two Windows assertions pinned the eager-relay marker to a constant that only held before the annotations backfill became an unconditional block rewrite. Ties them to `isWin32EagerRewrite` instead, and proves the rewrite chain through the handler's own output rather than through the factory — the earlier check would have stayed green if production stopped registering it. |
+| [#2167](https://github.com/lidge-jun/opencodex/pull/2167) | A 401/403 on real traffic quarantines the native account for reauth, but the next background `/wham/usage` refresh retracted that quarantine on a 200. A usage endpoint answering 200 does not prove the account can serve Responses traffic, which still answers 403 for a workspace the token can no longer select — so the account returned to rotation, failed identically, was re-marked, and `needsReauth` never settled. That is the symptom [#327](https://github.com/lidge-jun/opencodex/issues/327) was filed about, reintroduced through its own recovery path. |
 | [#1806](https://github.com/lidge-jun/opencodex/pull/1806) | Keeps an absolute POSIX sqlite home literal in POSIX service files. |
 | [#1805](https://github.com/lidge-jun/opencodex/pull/1805) | Gives the Windows test sandbox a real profile shape. |
 
@@ -111,7 +114,6 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 | [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 36k★ | [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) — `rpcUrl` credentials were written to the log unredacted. Also [#5588](https://github.com/tinyhumansai/openhuman/pull/5588), scrubbing credentials that carry no upper-case character, and [#5583](https://github.com/tinyhumansai/openhuman/pull/5583), a lint rule for the config boundary the frontend documents but never enforced. |
 | [nicolargo/glances](https://github.com/nicolargo/glances) | 33k★ | [#3670](https://github.com/nicolargo/glances/pull/3670) — container network stats came from a single interface, so a container with several under-reported its traffic; aggregates over all of them (closes [#3669](https://github.com/nicolargo/glances/issues/3669)). |
 | [decolua/9router](https://github.com/decolua/9router) | 25.7k★ | 13 open, including [#3369](https://github.com/decolua/9router/pull/3369) recovering a tool result that arrived without an id, and [#3368](https://github.com/decolua/9router/pull/3368) stopping a hard-coded heap cap from overriding the operator. |
-| [lidge-jun/opencodex](https://github.com/lidge-jun/opencodex) | 11k★ | [#2167](https://github.com/lidge-jun/opencodex/pull/2167) — a 401/403 on real traffic quarantines the native account for reauth, but the next background `/wham/usage` refresh retracted that quarantine on a 200. A usage endpoint answering 200 does not prove the account can serve Responses traffic, which still answers 403 for a workspace the token can no longer select. The account returned to rotation, failed identically, was re-marked, and `needsReauth` never settled — the symptom the original issue was filed about. |
 | [zenoamaro/react-quill](https://github.com/zenoamaro/react-quill) | 7k★ | [#1050](https://github.com/zenoamaro/react-quill/pull/1050) — replace `findDOMNode` with a ref so the editor works on React 19. |
 | [commandlineparser/commandline](https://github.com/commandlineparser/commandline) | 4.8k★ | [#953](https://github.com/commandlineparser/commandline/pull/953) — retarget the test project to net8.0 so the suite runs on current SDKs. |
 | [nestjsx/nestjs-typeorm-paginate](https://github.com/nestjsx/nestjs-typeorm-paginate) | 875★ | [#927](https://github.com/nestjsx/nestjs-typeorm-paginate/pull/927) — reject a limit of 0 instead of dividing `totalPages` by zero. |
