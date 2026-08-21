@@ -2,9 +2,9 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-17_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-18_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
-[![Open](https://img.shields.io/badge/open_for_review-31_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-33_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -23,7 +23,7 @@ all; those carry a written reproduction instead.
 
 ### Contribution record
 
-Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-08-20**,
+Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-08-21**,
 covering the preceding 12 months. "Landed" means the change is in the upstream
 default branch of a repository I do not own — as a merged pull request, or as a
 commit the maintainer cherry-picked from one. Pull requests in my own repositories are
@@ -32,11 +32,11 @@ not counted — the figures are what `gh search prs --author ntdatt812` returns 
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **17** | Merged by maintainers of repos I don't own |
+| Pull requests merged | **18** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
-| Pull requests open | **31** | Awaiting maintainer review |
-| Repositories | **14** | Third-party repos I've contributed to |
+| Pull requests open | **33** | Awaiting maintainer review |
+| Repositories | **15** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
 
@@ -92,11 +92,12 @@ Six commits in `master`.
 | [`8af5e75`](https://github.com/decolua/9router/commit/8af5e75) | Adds Fish Audio as a text-to-speech provider. |
 | [`b04c03c`](https://github.com/decolua/9router/commit/b04c03c) | Adds the Alibaba Token Plan provider (`token-plan.ap-southeast-1`). |
 
-**[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 11k★.
-Ten pull requests merged.
+**[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 11.5k★.
+Eleven pull requests merged.
 
 | PR | What it does |
 | --- | --- |
+| [#2265](https://github.com/lidge-jun/opencodex/pull/2265) | Every required publisher-key ACL failure reached CI as the same fixed string, so the three causes — the timeout budget, the effective-SID lookup, and icacls itself — were indistinguishable from a log, and each needs a different fix. The maintainer had said on [#2152](https://github.com/lidge-jun/opencodex/issues/2152) that settling it needed a Windows box and that they would rather leave it open than aim a fix at the wrong one of the three. This does not guess at which: it puts the bounded errno code in the message so the next dispatched run answers the question itself. Only the code crosses that boundary, re-checked for shape rather than trusted, so a pathname cannot reach a public log through it. |
 | [#1788](https://github.com/lidge-jun/opencodex/pull/1788) | Makes the responses path fail closed when a routed provider invokes a tool that was never declared, instead of passing it through. |
 | [#1780](https://github.com/lidge-jun/opencodex/pull/1780) | Normalizes tool-call ids so conversation history replays across providers. |
 | [#2042](https://github.com/lidge-jun/opencodex/pull/2042) | `noStructuredOutputModels` is documented, in seven locales, as an *exact* opt-out, and the Responses ingress enforces that. The native Chat passthrough matched the pre-colon prefix instead, so a `<listed>:<tag>` sibling the operator never opted out silently lost `response_format` and returned prose where JSON was expected. |
@@ -119,6 +120,7 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 
 | Project | | Pull request |
 | --- | --- | --- |
+| [openclaw/openclaw](https://github.com/openclaw/openclaw) | 386k★ | [#126761](https://github.com/openclaw/openclaw/pull/126761) — `models aliases {list,add,remove}` and `models scan` accepted `--agent` from the parent command and did nothing with it, not even validating the id, while every other `--agent`-aware `models` subcommand rejected an unknown one. There is no agent-scoped path to wire it to — those owners read `agents.defaults` only — so it is rejected at the leaf, the way `models set` already does (closes [#126597](https://github.com/openclaw/openclaw/issues/126597)). |
 | [github/spec-kit](https://github.com/github/spec-kit) | 130k★ | [#4230](https://github.com/github/spec-kit/pull/4230) — follow-up to the above. The validator suggested a paste-ready correction for conditions that wrapping cannot repair, and each one silently inverted the condition: `"   "` became `"{{ }}"`, `inputs.name == 'abc` kept its open quote, `inputs.tags | join` raises. It now asks the evaluator whether the core parses rather than restating its grammar, and names the fault when it does not. |
 | [garrytan/gstack](https://github.com/garrytan/gstack) | 128k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
 | [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 128k★ | [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476), [#6479](https://github.com/farion1231/cc-switch/pull/6479). |
@@ -126,6 +128,7 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 | [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39k★ | [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). Also [#1114](https://github.com/drawdb-io/drawdb/pull/1114), emitting the comma before inline foreign keys on SQLite export. |
 | [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 36k★ | [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) — `rpcUrl` credentials were written to the log unredacted. Also [#5588](https://github.com/tinyhumansai/openhuman/pull/5588), scrubbing credentials that carry no upper-case character, and [#5583](https://github.com/tinyhumansai/openhuman/pull/5583), a lint rule for the config boundary the frontend documents but never enforced. |
 | [nicolargo/glances](https://github.com/nicolargo/glances) | 33k★ | [#3670](https://github.com/nicolargo/glances/pull/3670) — container network stats came from a single interface, so a container with several under-reported its traffic; aggregates over all of them (closes [#3669](https://github.com/nicolargo/glances/issues/3669)). |
+| [lidge-jun/opencodex](https://github.com/lidge-jun/opencodex) | 11.5k★ | [#2272](https://github.com/lidge-jun/opencodex/pull/2272) — a route test hard-coded a POSIX destination path while the resolver builds it with `join`, so the case asserted the host's path separator rather than the override taking effect, and could never pass on Windows. Found by running the full suite there: 14029 tests, this was the only failure. |
 | [decolua/9router](https://github.com/decolua/9router) | 25.7k★ | 13 open, including [#3369](https://github.com/decolua/9router/pull/3369) recovering a tool result that arrived without an id, and [#3368](https://github.com/decolua/9router/pull/3368) stopping a hard-coded heap cap from overriding the operator. |
 | [zenoamaro/react-quill](https://github.com/zenoamaro/react-quill) | 7k★ | [#1050](https://github.com/zenoamaro/react-quill/pull/1050) — replace `findDOMNode` with a ref so the editor works on React 19. |
 | [commandlineparser/commandline](https://github.com/commandlineparser/commandline) | 4.8k★ | [#953](https://github.com/commandlineparser/commandline/pull/953) — retarget the test project to net8.0 so the suite runs on current SDKs. |
@@ -162,6 +165,16 @@ for it asserted the wrong thing and failed. Both are corrected in the pull reque
 with the reasoning left visible rather than quietly rewritten. I now mutation-check
 each test against the specific defect it claims to prevent, and put that table in
 the pull request.
+
+That check is not a formality, and the most recent case is the clearest. On
+[openclaw #126761](https://github.com/openclaw/openclaw/pull/126761) a review pointed
+out that four of my table rows all asserted the same shared spy, which nothing reset
+between rows. I verified the claim before changing anything rather than taking it on
+faith — and it was worse than a latent risk: blocking one subcommand from ever
+reaching its leaf left all 44 tests green, so the assertion had already been vacuous.
+Each row now owns its spy and asserts it ran exactly once; the same mutation fails,
+and only on that row. Mutation-checking catches the defect in the code under test —
+it does not, on its own, catch a test that was never testing anything.
 
 I've also offered to take on verification work rather than only sending patches:
 [claude-mem #3606](https://github.com/thedotmack/claude-mem/issues/3606#issuecomment-5325893081)
