@@ -174,7 +174,18 @@ faith — and it was worse than a latent risk: blocking one subcommand from ever
 reaching its leaf left all 44 tests green, so the assertion had already been vacuous.
 Each row now owns its spy and asserts it ran exactly once; the same mutation fails,
 and only on that row. Mutation-checking catches the defect in the code under test —
-it does not, on its own, catch a test that was never testing anything.
+it does not, on its own, catch a test that was never testing anything. The re-review
+of that fix reads `Overall correctness: patch is correct`, at 0.96 confidence.
+
+The same restraint matters when the evidence points at me and I cannot say why. On
+that same pull request a CI shard went red twice, on two different bases, while it
+was green on the last eight `main` runs — four of which failed CI for other reasons —
+and on six other open pull requests. The frequency argument was one-sided, and the
+mechanism was missing: nothing in the diff touches the failing test's module, and the
+failing job contains only a shard my changed file is not part of. I reported it as a
+flake only after a third run came back green with a single word in a Markdown file as
+the only difference, which cannot repair a failing test. Reading the numbers and
+claiming the regression would have been the comfortable move, and wrong.
 
 I've also offered to take on verification work rather than only sending patches:
 [claude-mem #3606](https://github.com/thedotmack/claude-mem/issues/3606#issuecomment-5325893081)
