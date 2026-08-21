@@ -2,9 +2,9 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-18_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-19_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
-[![Open](https://img.shields.io/badge/open_for_review-33_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-32_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -32,10 +32,10 @@ not counted — the figures are what `gh search prs --author ntdatt812` returns 
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **18** | Merged by maintainers of repos I don't own |
+| Pull requests merged | **19** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
-| Pull requests open | **33** | Awaiting maintainer review |
+| Pull requests open | **32** | Awaiting maintainer review |
 | Repositories | **15** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
@@ -93,10 +93,11 @@ Six commits in `master`.
 | [`b04c03c`](https://github.com/decolua/9router/commit/b04c03c) | Adds the Alibaba Token Plan provider (`token-plan.ap-southeast-1`). |
 
 **[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 11.5k★.
-Eleven pull requests merged.
+Twelve pull requests merged.
 
 | PR | What it does |
 | --- | --- |
+| [#2272](https://github.com/lidge-jun/opencodex/pull/2272) | A route test hard-coded `"/tmp/…/models.json"` while the resolver builds that destination with `join`, which is `\` on win32 — so the case asserted the host's path separator rather than the thing it existed to prove, that `PI_CODING_AGENT_DIR` took effect. The expectation is now built with `join` from one binding shared with the env value. I used `join` rather than calling `piConfigPath`, because deriving the expectation from the same resolver that produced the value would pass whatever the resolver did. Found by running the full suite on Windows: 14029 tests, this was the only failure. |
 | [#2265](https://github.com/lidge-jun/opencodex/pull/2265) | Every required publisher-key ACL failure reached CI as the same fixed string, so the three causes — the timeout budget, the effective-SID lookup, and icacls itself — were indistinguishable from a log, and each needs a different fix. The maintainer had said on [#2152](https://github.com/lidge-jun/opencodex/issues/2152) that settling it needed a Windows box and that they would rather leave it open than aim a fix at the wrong one of the three. This does not guess at which: it puts the bounded errno code in the message so the next dispatched run answers the question itself. Only the code crosses that boundary, re-checked for shape rather than trusted, so a pathname cannot reach a public log through it. |
 | [#1788](https://github.com/lidge-jun/opencodex/pull/1788) | Makes the responses path fail closed when a routed provider invokes a tool that was never declared, instead of passing it through. |
 | [#1780](https://github.com/lidge-jun/opencodex/pull/1780) | Normalizes tool-call ids so conversation history replays across providers. |
@@ -128,7 +129,6 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 | [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39k★ | [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). Also [#1114](https://github.com/drawdb-io/drawdb/pull/1114), emitting the comma before inline foreign keys on SQLite export. |
 | [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 36k★ | [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) — `rpcUrl` credentials were written to the log unredacted. Also [#5588](https://github.com/tinyhumansai/openhuman/pull/5588), scrubbing credentials that carry no upper-case character, and [#5583](https://github.com/tinyhumansai/openhuman/pull/5583), a lint rule for the config boundary the frontend documents but never enforced. |
 | [nicolargo/glances](https://github.com/nicolargo/glances) | 33k★ | [#3670](https://github.com/nicolargo/glances/pull/3670) — container network stats came from a single interface, so a container with several under-reported its traffic; aggregates over all of them (closes [#3669](https://github.com/nicolargo/glances/issues/3669)). |
-| [lidge-jun/opencodex](https://github.com/lidge-jun/opencodex) | 11.5k★ | [#2272](https://github.com/lidge-jun/opencodex/pull/2272) — a route test hard-coded a POSIX destination path while the resolver builds it with `join`, so the case asserted the host's path separator rather than the override taking effect, and could never pass on Windows. Found by running the full suite there: 14029 tests, this was the only failure. |
 | [decolua/9router](https://github.com/decolua/9router) | 25.7k★ | 13 open, including [#3369](https://github.com/decolua/9router/pull/3369) recovering a tool result that arrived without an id, and [#3368](https://github.com/decolua/9router/pull/3368) stopping a hard-coded heap cap from overriding the operator. |
 | [zenoamaro/react-quill](https://github.com/zenoamaro/react-quill) | 7k★ | [#1050](https://github.com/zenoamaro/react-quill/pull/1050) — replace `findDOMNode` with a ref so the editor works on React 19. |
 | [commandlineparser/commandline](https://github.com/commandlineparser/commandline) | 4.8k★ | [#953](https://github.com/commandlineparser/commandline/pull/953) — retarget the test project to net8.0 so the suite runs on current SDKs. |
