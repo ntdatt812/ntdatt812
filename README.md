@@ -4,7 +4,7 @@
 
 [![Landed](https://img.shields.io/badge/landed-20_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
-[![Open](https://img.shields.io/badge/open_for_review-31_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-32_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -35,7 +35,7 @@ not counted — the figures are what `gh search prs --author ntdatt812` returns 
 | Pull requests merged | **20** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
-| Pull requests open | **31** | Awaiting maintainer review |
+| Pull requests open | **32** | Awaiting maintainer review |
 | Repositories | **15** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
@@ -123,6 +123,7 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 | Project | | Pull request |
 | --- | --- | --- |
 | [openclaw/openclaw](https://github.com/openclaw/openclaw) | 386k★ | [#126761](https://github.com/openclaw/openclaw/pull/126761) — `models aliases {list,add,remove}` and `models scan` accepted `--agent` from the parent command and did nothing with it, not even validating the id, while every other `--agent`-aware `models` subcommand rejected an unknown one. There is no agent-scoped path to wire it to — those owners read `agents.defaults` only — so it is rejected at the leaf, the way `models set` already does (closes [#126597](https://github.com/openclaw/openclaw/issues/126597)). |
+| [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute) | 51.3k★ | [#11076](https://github.com/diegosouzapw/OmniRoute/pull/11076) — `GET /v1/combos` strips `connectionId` on purpose, so two steps pinning different accounts of one provider project to byte-identical objects and a client reads a two-account failover as one duplicated step. Adds a per-step `accountPinned` boolean derived from the id that still never leaves the server (closes [#10968](https://github.com/diegosouzapw/OmniRoute/issues/10968)). |
 | [garrytan/gstack](https://github.com/garrytan/gstack) | 128k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
 | [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 128k★ | [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476), [#6479](https://github.com/farion1231/cc-switch/pull/6479). |
 | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 91k★ | [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), [#3593](https://github.com/thedotmack/claude-mem/pull/3593). |
