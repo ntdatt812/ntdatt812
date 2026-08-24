@@ -2,9 +2,9 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-23_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-24_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
-[![Open](https://img.shields.io/badge/open_for_review-32_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-31_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -32,10 +32,10 @@ not counted — the figures are what `gh search prs --author ntdatt812` returns 
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **23** | Merged by maintainers of repos I don't own |
+| Pull requests merged | **24** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
-| Pull requests open | **32** | Awaiting maintainer review |
+| Pull requests open | **31** | Awaiting maintainer review |
 | Repositories | **15** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
@@ -95,7 +95,7 @@ Six commits in `master`.
 | [`b04c03c`](https://github.com/decolua/9router/commit/b04c03c) | Adds the Alibaba Token Plan provider (`token-plan.ap-southeast-1`). |
 
 **[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 11.9k★.
-Twelve pull requests merged.
+Thirteen pull requests merged.
 
 | PR | What it does |
 | --- | --- |
@@ -111,6 +111,7 @@ Twelve pull requests merged.
 | [#2167](https://github.com/lidge-jun/opencodex/pull/2167) | A 401/403 on real traffic quarantines the native account for reauth, but the next background `/wham/usage` refresh retracted that quarantine on a 200. A usage endpoint answering 200 does not prove the account can serve Responses traffic, which still answers 403 for a workspace the token can no longer select — so the account returned to rotation, failed identically, was re-marked, and `needsReauth` never settled. That is the symptom [#327](https://github.com/lidge-jun/opencodex/issues/327) was filed about, reintroduced through its own recovery path. |
 | [#1806](https://github.com/lidge-jun/opencodex/pull/1806) | Keeps an absolute POSIX sqlite home literal in POSIX service files. |
 | [#1805](https://github.com/lidge-jun/opencodex/pull/1805) | Gives the Windows test sandbox a real profile shape. |
+| [#2469](https://github.com/lidge-jun/opencodex/pull/2469) | `ocx models` built the reasoning ladder from a bare per-model lookup, while the catalog and the effort cap both resolve through `configuredReasoningEfforts` — which also returns `[]` for a `noReasoningModels` match, drops levels Codex does not declare, and re-adds tiers a wire map proves the model emits. So the command an operator reads to check a config advertised a three-rung ladder for a model the proxy strips reasoning from entirely, and printed an undeclared level as supported. Sibling of #2086, which routed the three maps through the runtime's resolvers on the lines directly above and left this one a partial re-implementation. |
 
 **[nicolargo/glances](https://github.com/nicolargo/glances)** — system monitor, 33.4k★.
 One pull request merged.
@@ -139,7 +140,6 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 | --- | --- | --- |
 | [openclaw/openclaw](https://github.com/openclaw/openclaw) | 387k★ | [#126761](https://github.com/openclaw/openclaw/pull/126761) — `models aliases {list,add,remove}` and `models scan` accepted `--agent` from the parent command and did nothing with it, not even validating the id, while every other `--agent`-aware `models` subcommand rejected an unknown one. There is no agent-scoped path to wire it to — those owners read `agents.defaults` only — so it is rejected at the leaf, the way `models set` already does (closes [#126597](https://github.com/openclaw/openclaw/issues/126597)). |
 | [github/spec-kit](https://github.com/github/spec-kit) | 131k★ | [#4292](https://github.com/github/spec-kit/pull/4292) — `evaluate_expression` takes its typed path only when the whole string is one `{{ }}` block; anything else is substituted into text and coerced by `bool()`. So `{{ a }} and {{ b }}` renders `"False and False"` and is always true, and validates clean. The three validators already told authors the condition must be "a single complete `{{ }}` block" — nothing checked it. |
-| [lidge-jun/opencodex](https://github.com/lidge-jun/opencodex) | 11.9k★ | [#2469](https://github.com/lidge-jun/opencodex/pull/2469) — `ocx models` built the reasoning ladder from a bare lookup while the catalog and the effort cap both resolve through `configuredReasoningEfforts`, so the command advertised a ladder the proxy strips entirely and echoed an undeclared level as supported. |
 | [garrytan/gstack](https://github.com/garrytan/gstack) | 129k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
 | [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 129k★ | [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476), [#6479](https://github.com/farion1231/cc-switch/pull/6479). |
 | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 91.6k★ | [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), [#3593](https://github.com/thedotmack/claude-mem/pull/3593). |
