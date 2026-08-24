@@ -218,6 +218,20 @@ jumped from one measurement to a cause without ruling out the cheaper one, and p
 on someone else's pull request. Corrected in place on both threads, plainly, the same
 morning I found it.
 
+The sharpest version of that lesson is not a wrong conclusion but a measurement that
+lied. On [opencodex #2469](https://github.com/lidge-jun/opencodex/pull/2469) the review
+checklist has a box for "I pushed my PR to the latest dev commit". I checked before
+ticking it — `git fetch origin dev`, then `git merge-base --is-ancestor origin/dev HEAD`,
+which answered cleanly that my branch contained the branch tip. It was wrong. That
+repository rewinds `dev`, and a non-forced fetch will not move a remote-tracking ref
+backwards, so my local `origin/dev` had been stale for days and my check was comparing
+against it. The branch tip read from the API instead put me 265 commits behind. A green
+check that agrees with you is the easiest thing in the world to accept, and this one was
+produced by the correct command, run correctly, answering a slightly different question
+than the one I thought I had asked. I rebased, re-ran the tests and the mutation on the
+new base rather than carrying the old results over, and said on the pull request that the
+box had been ticked wrongly and why. It merged the same morning.
+
 I've also offered to take on verification work rather than only sending patches:
 [claude-mem #3606](https://github.com/thedotmack/claude-mem/issues/3606#issuecomment-5325893081)
 — checking each defect a tracker claims against current `HEAD` and reporting
