@@ -43,7 +43,7 @@ I am not a maintainer of any of these projects, and I don't claim to be.
 ### Security
 
 **[GHSA-w8pw-h853-frw2](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)**
-— [jdx/mise](https://github.com/jdx/mise), 32.7k★. Moderate, CVSS 4.0 **5.9**.
+— [jdx/mise](https://github.com/jdx/mise), 32.9k★. Moderate, CVSS 4.0 **5.9**.
 Affects `<= 2026.8.7`, patched in **2026.8.9**. Reported privately, published by the
 maintainer, credited as reporter.
 
@@ -66,7 +66,7 @@ Database. Both are for the maintainer and GitHub to decide.
 
 ### Landed
 
-**[github/spec-kit](https://github.com/github/spec-kit)** — spec-driven development toolkit, 130k★.
+**[github/spec-kit](https://github.com/github/spec-kit)** — spec-driven development toolkit, 131k★.
 Two pull requests merged.
 
 | PR | What it does |
@@ -74,7 +74,7 @@ Two pull requests merged.
 | [#4182](https://github.com/github/spec-kit/pull/4182) | A workflow `condition:` written without a `{{ }}` block is never evaluated. `evaluate_expression` only substitutes `{{ … }}`, so the string comes back untouched and any non-empty text is truthy — `condition: inputs.count > 100` always takes the `then` branch, and a `while` always runs to `max_iterations`. Rejects it at validation. The scan walks every block rather than stopping at the first, so a later unterminated one is caught too, and it separates a block that is never evaluated from one the interpolator truncates and *does* evaluate, because the two need opposite advice. |
 | [#4230](https://github.com/github/spec-kit/pull/4230) | Follow-up to the above. Having rejected the condition, the validator then offered a paste-ready correction — and for a whole class of conditions that correction silently inverted the result rather than repairing it: `inputs.a === inputs.b` and `bogus == 'x'` both resolve to `None` once wrapped, so a truthy condition comes back false. The gate now walks to the operands the evaluator actually reads, and withholds the suggestion when any of them is not a name the namespace supplies. Eight review rounds, each one a shape the previous gate could not see; the pattern behind them is written up as [#4274](https://github.com/github/spec-kit/issues/4274). |
 
-**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)** — AI gateway, 51.3k★.
+**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)** — AI gateway, 53.9k★.
 Two pull requests merged.
 
 | PR | What it does |
@@ -82,7 +82,7 @@ Two pull requests merged.
 | [#10715](https://github.com/diegosouzapw/OmniRoute/pull/10715) | `POST /api/tools/agent-bridge/cert/regenerate` called `generateCert()` with no arguments, and that function short-circuits whenever both files already exist. On any machine that had started the bridge once, the endpoint was a no-op — while still answering `{ ok: true }` with the two paths, so the UI reported success and `/cert/download` kept serving the identical file. `generateCert` now takes an opt-in `{ force }`, and the regenerate route is its only caller. The other three callers only need a certificate to exist, so they keep the short-circuit and are untouched (closes [#10467](https://github.com/diegosouzapw/OmniRoute/issues/10467)). |
 | [#11076](https://github.com/diegosouzapw/OmniRoute/pull/11076) | `GET /v1/combos` strips `connectionId` on purpose, which leaves two steps pinning *different accounts* of one provider projecting to byte-identical objects — so a client reads a two-account failover as the same step listed twice, and an importing integration concludes the combo has no failover. Adds a per-step `accountPinned` boolean derived from the id that still never leaves the server, not a prefix of it. Set on every model step, so an absent field means an older server rather than an unpinned step; never set on a `combo-ref`, which has no account of its own (closes [#10968](https://github.com/diegosouzapw/OmniRoute/issues/10968)). |
 
-**[decolua/9router](https://github.com/decolua/9router)** — LLM API router, 25.7k★.
+**[decolua/9router](https://github.com/decolua/9router)** — LLM API router, 26.1k★.
 Six commits in `master`.
 
 | Commit | What it does |
@@ -94,7 +94,7 @@ Six commits in `master`.
 | [`8af5e75`](https://github.com/decolua/9router/commit/8af5e75) | Adds Fish Audio as a text-to-speech provider. |
 | [`b04c03c`](https://github.com/decolua/9router/commit/b04c03c) | Adds the Alibaba Token Plan provider (`token-plan.ap-southeast-1`). |
 
-**[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 11.5k★.
+**[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 11.9k★.
 Twelve pull requests merged.
 
 | PR | What it does |
@@ -112,14 +112,14 @@ Twelve pull requests merged.
 | [#1806](https://github.com/lidge-jun/opencodex/pull/1806) | Keeps an absolute POSIX sqlite home literal in POSIX service files. |
 | [#1805](https://github.com/lidge-jun/opencodex/pull/1805) | Gives the Windows test sandbox a real profile shape. |
 
-**[nicolargo/glances](https://github.com/nicolargo/glances)** — system monitor, 33k★.
+**[nicolargo/glances](https://github.com/nicolargo/glances)** — system monitor, 33.4k★.
 One pull request merged.
 
 | PR | What it does |
 | --- | --- |
 | [#3670](https://github.com/nicolargo/glances/pull/3670) | Container network stats were read from a single interface, so a container attached to several networks under-reported its traffic by whatever the other interfaces carried. Aggregates over all of them. The issue was written by the maintainer as a specification rather than a bug report, so the patch follows it rather than re-deriving it (closes [#3669](https://github.com/nicolargo/glances/issues/3669)). |
 
-**[drawdb-io/drawdb](https://github.com/drawdb-io/drawdb)** — database diagram editor, 39k★.
+**[drawdb-io/drawdb](https://github.com/drawdb-io/drawdb)** — database diagram editor, 39.2k★.
 One pull request merged.
 
 | PR | What it does |
@@ -137,13 +137,13 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 
 | Project | | Pull request |
 | --- | --- | --- |
-| [openclaw/openclaw](https://github.com/openclaw/openclaw) | 386k★ | [#126761](https://github.com/openclaw/openclaw/pull/126761) — `models aliases {list,add,remove}` and `models scan` accepted `--agent` from the parent command and did nothing with it, not even validating the id, while every other `--agent`-aware `models` subcommand rejected an unknown one. There is no agent-scoped path to wire it to — those owners read `agents.defaults` only — so it is rejected at the leaf, the way `models set` already does (closes [#126597](https://github.com/openclaw/openclaw/issues/126597)). |
-| [garrytan/gstack](https://github.com/garrytan/gstack) | 128k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
-| [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 128k★ | [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476), [#6479](https://github.com/farion1231/cc-switch/pull/6479). |
-| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 91k★ | [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), [#3593](https://github.com/thedotmack/claude-mem/pull/3593). |
-| [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39k★ | [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). |
-| [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 36k★ | [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) — `rpcUrl` credentials were written to the log unredacted. Also [#5588](https://github.com/tinyhumansai/openhuman/pull/5588), scrubbing credentials that carry no upper-case character, and [#5583](https://github.com/tinyhumansai/openhuman/pull/5583), a lint rule for the config boundary the frontend documents but never enforced. |
-| [decolua/9router](https://github.com/decolua/9router) | 25.7k★ | 13 open, including [#3369](https://github.com/decolua/9router/pull/3369) recovering a tool result that arrived without an id, and [#3368](https://github.com/decolua/9router/pull/3368) stopping a hard-coded heap cap from overriding the operator. |
+| [openclaw/openclaw](https://github.com/openclaw/openclaw) | 387k★ | [#126761](https://github.com/openclaw/openclaw/pull/126761) — `models aliases {list,add,remove}` and `models scan` accepted `--agent` from the parent command and did nothing with it, not even validating the id, while every other `--agent`-aware `models` subcommand rejected an unknown one. There is no agent-scoped path to wire it to — those owners read `agents.defaults` only — so it is rejected at the leaf, the way `models set` already does (closes [#126597](https://github.com/openclaw/openclaw/issues/126597)). |
+| [garrytan/gstack](https://github.com/garrytan/gstack) | 129k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
+| [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 129k★ | [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476), [#6479](https://github.com/farion1231/cc-switch/pull/6479). |
+| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 91.6k★ | [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), [#3593](https://github.com/thedotmack/claude-mem/pull/3593). |
+| [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39.2k★ | [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). |
+| [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 36.8k★ | [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) — `rpcUrl` credentials were written to the log unredacted. Also [#5588](https://github.com/tinyhumansai/openhuman/pull/5588), scrubbing credentials that carry no upper-case character, and [#5583](https://github.com/tinyhumansai/openhuman/pull/5583), a lint rule for the config boundary the frontend documents but never enforced. |
+| [decolua/9router](https://github.com/decolua/9router) | 26.1k★ | 13 open, including [#3369](https://github.com/decolua/9router/pull/3369) recovering a tool result that arrived without an id, and [#3368](https://github.com/decolua/9router/pull/3368) stopping a hard-coded heap cap from overriding the operator. |
 | [zenoamaro/react-quill](https://github.com/zenoamaro/react-quill) | 7k★ | [#1050](https://github.com/zenoamaro/react-quill/pull/1050) — replace `findDOMNode` with a ref so the editor works on React 19. |
 | [commandlineparser/commandline](https://github.com/commandlineparser/commandline) | 4.8k★ | [#953](https://github.com/commandlineparser/commandline/pull/953) — retarget the test project to net8.0 so the suite runs on current SDKs. |
 | [nestjsx/nestjs-typeorm-paginate](https://github.com/nestjsx/nestjs-typeorm-paginate) | 875★ | [#927](https://github.com/nestjsx/nestjs-typeorm-paginate/pull/927) — reject a limit of 0 instead of dividing `totalPages` by zero. |
@@ -200,6 +200,20 @@ failing job contains only a shard my changed file is not part of. I reported it 
 flake only after a third run came back green with a single word in a Markdown file as
 the only difference, which cannot repair a failing test. Reading the numbers and
 claiming the regression would have been the comfortable move, and wrong.
+
+One more where nobody caught me and I had to catch myself. A merged
+pull request of mine, [opencodex #2272](https://github.com/lidge-jun/opencodex/pull/2272),
+was not reachable from the branch it had been merged into, and the test it fixed was red
+again there. I checked whether my other merges in that repository were still reachable —
+eleven of twelve were — and reported to the maintainer that a force-push had dropped this
+one. Every measurement was correct and the conclusion was wrong: the change was on `main`
+all along, and had shipped in a release. `dev` was simply behind `main` by 184 commits and
+ahead by none, which is a branch rewound after a release, not a lost merge. The
+eleven-of-twelve table felt like corroboration and proved nothing — those eleven merged
+before the point `dev` was cut, so they are consistent with either explanation. I had
+jumped from one measurement to a cause without ruling out the cheaper one, and posted it
+on someone else's pull request. Corrected in place on both threads, plainly, the same
+morning I found it.
 
 I've also offered to take on verification work rather than only sending patches:
 [claude-mem #3606](https://github.com/thedotmack/claude-mem/issues/3606#issuecomment-5325893081)
