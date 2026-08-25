@@ -2,9 +2,9 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-24_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-28_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
-[![Open](https://img.shields.io/badge/open_for_review-31_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-60_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -23,7 +23,7 @@ carry a written reproduction instead.
 
 ### Contribution record
 
-Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-08-24**,
+Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-08-25**,
 covering the preceding 12 months. "Landed" means the change is in the upstream
 default branch of a repository I do not own — as a merged pull request, or as a
 commit the maintainer cherry-picked from one. Pull requests in my own repositories are
@@ -32,10 +32,10 @@ not counted — the figures are what `gh search prs --author ntdatt812` returns 
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **24** | Merged by maintainers of repos I don't own |
+| Pull requests merged | **28** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
-| Pull requests open | **31** | Awaiting maintainer review |
+| Pull requests open | **60** | Awaiting maintainer review |
 | Repositories | **15** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
@@ -43,7 +43,7 @@ I am not a maintainer of any of these projects, and I don't claim to be.
 ### Security
 
 **[GHSA-w8pw-h853-frw2](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)**
-— [jdx/mise](https://github.com/jdx/mise), 32.9k★. Moderate, CVSS 4.0 **5.9**.
+— [jdx/mise](https://github.com/jdx/mise), 33.0k★. Moderate, CVSS 4.0 **5.9**.
 Affects `<= 2026.8.7`, patched in **2026.8.9**. Reported privately, published by the
 maintainer, credited as reporter.
 
@@ -74,15 +74,17 @@ Two pull requests merged.
 | [#4182](https://github.com/github/spec-kit/pull/4182) | A workflow `condition:` written without a `{{ }}` block is never evaluated. `evaluate_expression` only substitutes `{{ … }}`, so the string comes back untouched and any non-empty text is truthy — `condition: inputs.count > 100` always takes the `then` branch, and a `while` always runs to `max_iterations`. Rejects it at validation. The scan walks every block rather than stopping at the first, so a later unterminated one is caught too, and it separates a block that is never evaluated from one the interpolator truncates and *does* evaluate, because the two need opposite advice. |
 | [#4230](https://github.com/github/spec-kit/pull/4230) | Follow-up to the above. Having rejected the condition, the validator then offered a paste-ready correction — and for a whole class of conditions that correction silently inverted the result rather than repairing it: `inputs.a === inputs.b` and `bogus == 'x'` both resolve to `None` once wrapped, so a truthy condition comes back false. The gate now walks to the operands the evaluator actually reads, and withholds the suggestion when any of them is not a name the namespace supplies. Eight review rounds, each one a shape the previous gate could not see; the pattern behind them is written up as [#4274](https://github.com/github/spec-kit/issues/4274). |
 
-**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)** — AI gateway, 53.9k★.
-Two pull requests merged.
+**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)** — AI gateway, 54.7k★.
+Four pull requests merged.
 
 | PR | What it does |
 | --- | --- |
 | [#10715](https://github.com/diegosouzapw/OmniRoute/pull/10715) | `POST /api/tools/agent-bridge/cert/regenerate` called `generateCert()` with no arguments, and that function short-circuits whenever both files already exist. On any machine that had started the bridge once, the endpoint was a no-op — while still answering `{ ok: true }` with the two paths, so the UI reported success and `/cert/download` kept serving the identical file. `generateCert` now takes an opt-in `{ force }`, and the regenerate route is its only caller. The other three callers only need a certificate to exist, so they keep the short-circuit and are untouched (closes [#10467](https://github.com/diegosouzapw/OmniRoute/issues/10467)). |
 | [#11076](https://github.com/diegosouzapw/OmniRoute/pull/11076) | `GET /v1/combos` strips `connectionId` on purpose, which leaves two steps pinning *different accounts* of one provider projecting to byte-identical objects — so a client reads a two-account failover as the same step listed twice, and an importing integration concludes the combo has no failover. Adds a per-step `accountPinned` boolean derived from the id that still never leaves the server, not a prefix of it. Set on every model step, so an absent field means an older server rather than an unpinned step; never set on a `combo-ref`, which has no account of its own (closes [#10968](https://github.com/diegosouzapw/OmniRoute/issues/10968)). |
+| [#11388](https://github.com/diegosouzapw/OmniRoute/pull/11388) | The `?handshake=1` response reports the live server's real listening port, and the dashboard read `publicUrl` and `path` out of it and nothing else — so the socket URL kept the port inlined into the bundle at build time, which is the whole reason that handshake exists. Setting `LIVE_WS_PORT` moved the server and left a prebuilt Docker or npm image dialling `20132` with no way to correct it short of rebuilding the image. Reads `live.port` as well, and resolves the URL through one ordered fallback instead of three call sites (closes [#11331](https://github.com/diegosouzapw/OmniRoute/issues/11331)). |
+| [#11368](https://github.com/diegosouzapw/OmniRoute/pull/11368) | `createProviderConnection` copies optional fields onto the row through an allowlist, and `tokenExpiresAt` was not on it — so the insert bound `NULL` on every create, however good the payload was. That made an earlier fix a no-op end to end: the OAuth payload mirrors the computed expiry precisely so the dashboard badge does not flash "Token Expired" before the first background refresh, and the value was discarded one layer down. The update path already carried it, so a connection only gained the field after its first refresh. One string on the allowlist. |
 
-**[decolua/9router](https://github.com/decolua/9router)** — LLM API router, 26.1k★.
+**[decolua/9router](https://github.com/decolua/9router)** — LLM API router, 26.3k★.
 Six commits in `master`.
 
 | Commit | What it does |
@@ -94,8 +96,8 @@ Six commits in `master`.
 | [`8af5e75`](https://github.com/decolua/9router/commit/8af5e75) | Adds Fish Audio as a text-to-speech provider. |
 | [`b04c03c`](https://github.com/decolua/9router/commit/b04c03c) | Adds the Alibaba Token Plan provider (`token-plan.ap-southeast-1`). |
 
-**[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 11.9k★.
-Thirteen pull requests merged.
+**[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 12.1k★.
+Fifteen pull requests merged.
 
 | PR | What it does |
 | --- | --- |
@@ -112,6 +114,8 @@ Thirteen pull requests merged.
 | [#1806](https://github.com/lidge-jun/opencodex/pull/1806) | Keeps an absolute POSIX sqlite home literal in POSIX service files. |
 | [#1805](https://github.com/lidge-jun/opencodex/pull/1805) | Gives the Windows test sandbox a real profile shape. |
 | [#2469](https://github.com/lidge-jun/opencodex/pull/2469) | `ocx models` built the reasoning ladder from a bare per-model lookup, while the catalog and the effort cap both resolve through `configuredReasoningEfforts` — which also returns `[]` for a `noReasoningModels` match, drops levels Codex does not declare, and re-adds tiers a wire map proves the model emits. So the command an operator reads to check a config advertised a three-rung ladder for a model the proxy strips reasoning from entirely, and printed an undeclared level as supported. Sibling of #2086, which routed the three maps through the runtime's resolvers on the lines directly above and left this one a partial re-implementation. |
+| [#2481](https://github.com/lidge-jun/opencodex/pull/2481) | `filterCatalogVisibleModels` built its allowlist as a set of raw ids, while the block-list four lines above it already compared through `slugEquals` and the canonical resolver in `sync.ts` keys the same list through `slugEquivalenceKey(routedSlug(…))`. So an operator who pasted the slug the model picker shows — the encoded spelling, for any provider whose ids contain a slash — had that provider's models vanish from `/v1/models` and the injected catalog while routing still worked. Keys the allowlist the way the canonical stage keys it, so the two catalog stages share one equivalence relation. The maintainer tried replacing that key with a roster decode and withdrew it: on an incomplete discovery snapshot the decode grants exactly the same thing, and it would leave the two stages disagreeing again. |
+| [#2485](https://github.com/lidge-jun/opencodex/pull/2485) | `buildClaudeContextWindows` registers a bare routed id only when it is unambiguous across providers — but the count deciding that was taken over *every* routed model, including the ones the loop directly below skips for having no usable window. A skipped row contributes no window, so it cannot disagree with anything, yet it still pushed the count to two and withheld the key. A genuine 1M model then lost its `[1m]` marker and the CLI's 1M accounting because an unrelated provider happened to list the same id. |
 
 **[nicolargo/glances](https://github.com/nicolargo/glances)** — system monitor, 33.4k★.
 One pull request merged.
@@ -139,14 +143,15 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 | Project | | Pull request |
 | --- | --- | --- |
 | [openclaw/openclaw](https://github.com/openclaw/openclaw) | 387k★ | [#126761](https://github.com/openclaw/openclaw/pull/126761) — `models aliases {list,add,remove}` and `models scan` accepted `--agent` from the parent command and did nothing with it, not even validating the id, while every other `--agent`-aware `models` subcommand rejected an unknown one. There is no agent-scoped path to wire it to — those owners read `agents.defaults` only — so it is rejected at the leaf, the way `models set` already does (closes [#126597](https://github.com/openclaw/openclaw/issues/126597)). |
-| [github/spec-kit](https://github.com/github/spec-kit) | 131k★ | [#4292](https://github.com/github/spec-kit/pull/4292) — `evaluate_expression` takes its typed path only when the whole string is one `{{ }}` block; anything else is substituted into text and coerced by `bool()`. So `{{ a }} and {{ b }}` renders `"False and False"` and is always true, and validates clean. The three validators already told authors the condition must be "a single complete `{{ }}` block" — nothing checked it. |
+| [github/spec-kit](https://github.com/github/spec-kit) | 131k★ | [#4292](https://github.com/github/spec-kit/pull/4292) — `evaluate_expression` takes its typed path only when the whole string is one `{{ }}` block; anything else is substituted into text and coerced by `bool()`. So `{{ a }} and {{ b }}` renders `"False and False"` and is always true, and validates clean. The three validators already told authors the condition must be "a single complete `{{ }}` block" — nothing checked it. Also [#4295](https://github.com/github/spec-kit/pull/4295), the same hole one construct over: a `switch` expression that is never evaluated. |
 | [garrytan/gstack](https://github.com/garrytan/gstack) | 129k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
-| [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 129k★ | [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476), [#6479](https://github.com/farion1231/cc-switch/pull/6479). |
-| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 91.6k★ | [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), [#3593](https://github.com/thedotmack/claude-mem/pull/3593). |
-| [nicolargo/glances](https://github.com/nicolargo/glances) | 33.4k★ | [#3673](https://github.com/nicolargo/glances/pull/3673) — on Windows `psutil` reports the Win32 priority *class* in `nice`, not a nice value, and those numbers are neither ordered nor small (`32` is normal, `32768` is *above* normal), so the NI column showed a five-digit number in a 3-character field. Renders the six classes as the labels Windows itself uses, in the TUI and the WebUI, while the API keeps the raw value (closes [#3672](https://github.com/nicolargo/glances/issues/3672)). |
+| [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 129k★ | [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476), [#6479](https://github.com/farion1231/cc-switch/pull/6479), and [#6768](https://github.com/farion1231/cc-switch/pull/6768) for two locale keys the UI renders as raw identifiers. |
+| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 91.8k★ | [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), [#3593](https://github.com/thedotmack/claude-mem/pull/3593). |
 | [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39.2k★ | [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). |
-| [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 36.8k★ | [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) — `rpcUrl` credentials were written to the log unredacted. Also [#5588](https://github.com/tinyhumansai/openhuman/pull/5588), scrubbing credentials that carry no upper-case character, and [#5583](https://github.com/tinyhumansai/openhuman/pull/5583), a lint rule for the config boundary the frontend documents but never enforced. |
-| [decolua/9router](https://github.com/decolua/9router) | 26.1k★ | 13 open, including [#3369](https://github.com/decolua/9router/pull/3369) recovering a tool result that arrived without an id, and [#3368](https://github.com/decolua/9router/pull/3368) stopping a hard-coded heap cap from overriding the operator. |
+| [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 37.5k★ | 13 open. [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) — `rpcUrl` credentials were written to the log unredacted; [#5588](https://github.com/tinyhumansai/openhuman/pull/5588) scrubs credentials that carry no upper-case character, and [#5583](https://github.com/tinyhumansai/openhuman/pull/5583) adds a lint rule for the config boundary the frontend documents but never enforced. Then a run at the Claude Code stream reader, where three separate paths lose bytes: [#5718](https://github.com/tinyhumansai/openhuman/pull/5718) decodes stdout across chunk boundaries, [#5719](https://github.com/tinyhumansai/openhuman/pull/5719) bounds the stderr buffer without splitting a character, and [#5741](https://github.com/tinyhumansai/openhuman/pull/5741) reports the unparsable lines the parser deliberately keeps and the event mapper silently drops. Also [#5743](https://github.com/tinyhumansai/openhuman/pull/5743), where a failed chunk read was indistinguishable from a missing chunk, and [#5744](https://github.com/tinyhumansai/openhuman/pull/5744), which stops `subagentStop` from being reported as wired when nothing fires it. |
+| [nicolargo/glances](https://github.com/nicolargo/glances) | 33.4k★ | 9 open. [#3673](https://github.com/nicolargo/glances/pull/3673) — on Windows `psutil` reports the Win32 priority *class* in `nice`, not a nice value, and those numbers are neither ordered nor small (`32` is normal, `32768` is *above* normal), so the NI column showed a five-digit number in a 3-character field. Renders the six classes as the labels Windows itself uses, in the TUI and the WebUI, while the API keeps the raw value (closes [#3672](https://github.com/nicolargo/glances/issues/3672)). Also [#3677](https://github.com/nicolargo/glances/pull/3677), where the ICMP timeout was sent in the wrong unit and made healthy remote hosts read as offline; [#3676](https://github.com/nicolargo/glances/pull/3676), which honours `folder_N_refresh` instead of walking every cycle; [#3675](https://github.com/nicolargo/glances/pull/3675) and [#3674](https://github.com/nicolargo/glances/pull/3674). |
+| [decolua/9router](https://github.com/decolua/9router) | 26.3k★ | 21 open, including [#3369](https://github.com/decolua/9router/pull/3369) recovering a tool result that arrived without an id, and [#3368](https://github.com/decolua/9router/pull/3368) stopping a hard-coded heap cap from overriding the operator. |
+| [lidge-jun/opencodex](https://github.com/lidge-jun/opencodex) | 12.1k★ | [#2542](https://github.com/lidge-jun/opencodex/pull/2542) — serve the last catalog reading while the Windows probe refreshes, instead of answering with nothing while it runs. |
 | [zenoamaro/react-quill](https://github.com/zenoamaro/react-quill) | 7k★ | [#1050](https://github.com/zenoamaro/react-quill/pull/1050) — replace `findDOMNode` with a ref so the editor works on React 19. |
 | [commandlineparser/commandline](https://github.com/commandlineparser/commandline) | 4.8k★ | [#953](https://github.com/commandlineparser/commandline/pull/953) — retarget the test project to net8.0 so the suite runs on current SDKs. |
 | [nestjsx/nestjs-typeorm-paginate](https://github.com/nestjsx/nestjs-typeorm-paginate) | 875★ | [#927](https://github.com/nestjsx/nestjs-typeorm-paginate/pull/927) — reject a limit of 0 instead of dividing `totalPages` by zero. |
