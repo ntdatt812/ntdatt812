@@ -2,9 +2,9 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-62_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-63_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
-[![Open](https://img.shields.io/badge/open_for_review-80_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-81_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -23,7 +23,7 @@ carry a written reproduction instead.
 
 ### Contribution record
 
-Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-08-29**,
+Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-08-30**,
 covering the preceding 12 months. "Landed" means the change is in the upstream
 default branch of a repository I do not own — as a merged pull request, or as a
 commit the maintainer cherry-picked from one. Pull requests in my own repositories are
@@ -34,10 +34,10 @@ per-repository counts in both directions.
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **62** | Merged by maintainers of repos I don't own |
+| Pull requests merged | **63** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
-| Pull requests open | **80** | Awaiting maintainer review |
+| Pull requests open | **81** | Awaiting maintainer review |
 | Repositories | **16** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
@@ -68,7 +68,7 @@ Database. Both are for the maintainer and GitHub to decide.
 
 ### Landed
 
-**[github/spec-kit](https://github.com/github/spec-kit)** — spec-driven development toolkit, 131k★.
+**[github/spec-kit](https://github.com/github/spec-kit)** — spec-driven development toolkit, 132k★.
 Two pull requests merged.
 
 | PR | What it does |
@@ -76,7 +76,7 @@ Two pull requests merged.
 | [#4182](https://github.com/github/spec-kit/pull/4182) | A workflow `condition:` written without a `{{ }}` block is never evaluated. `evaluate_expression` only substitutes `{{ … }}`, so the string comes back untouched and any non-empty text is truthy — `condition: inputs.count > 100` always takes the `then` branch, and a `while` always runs to `max_iterations`. Rejects it at validation. The scan walks every block rather than stopping at the first, so a later unterminated one is caught too, and it separates a block that is never evaluated from one the interpolator truncates and *does* evaluate, because the two need opposite advice. |
 | [#4230](https://github.com/github/spec-kit/pull/4230) | Follow-up to the above. Having rejected the condition, the validator then offered a paste-ready correction — and for a whole class of conditions that correction silently inverted the result rather than repairing it: `inputs.a === inputs.b` and `bogus == 'x'` both resolve to `None` once wrapped, so a truthy condition comes back false. The gate now walks to the operands the evaluator actually reads, and withholds the suggestion when any of them is not a name the namespace supplies. Eight review rounds, each one a shape the previous gate could not see; the pattern behind them is written up as [#4274](https://github.com/github/spec-kit/issues/4274). |
 
-**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)** — AI gateway, 57.7k★.
+**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)** — AI gateway, 58.2k★.
 Seventeen pull requests merged.
 
 | PR | What it does |
@@ -92,7 +92,7 @@ Seventeen pull requests merged.
 | [#11388](https://github.com/diegosouzapw/OmniRoute/pull/11388) | The `?handshake=1` response reports the live server's real listening port, and the dashboard read `publicUrl` and `path` out of it and nothing else — so the socket URL kept the port inlined into the bundle at build time, which is the whole reason that handshake exists. Setting `LIVE_WS_PORT` moved the server and left a prebuilt Docker or npm image dialling `20132` with no way to correct it short of rebuilding the image. Reads `live.port` as well, and resolves the URL through one ordered fallback instead of three call sites (closes [#11331](https://github.com/diegosouzapw/OmniRoute/issues/11331)). |
 | [#11368](https://github.com/diegosouzapw/OmniRoute/pull/11368) | `createProviderConnection` copies optional fields onto the row through an allowlist, and `tokenExpiresAt` was not on it — so the insert bound `NULL` on every create, however good the payload was. That made an earlier fix a no-op end to end: the OAuth payload mirrors the computed expiry precisely so the dashboard badge does not flash "Token Expired" before the first background refresh, and the value was discarded one layer down. The update path already carried it, so a connection only gained the field after its first refresh. One string on the allowlist. |
 
-**[decolua/9router](https://github.com/decolua/9router)** — LLM API router, 26.4k★.
+**[decolua/9router](https://github.com/decolua/9router)** — LLM API router, 26.7k★.
 Six commits in `master`.
 
 | Commit | What it does |
@@ -104,7 +104,7 @@ Six commits in `master`.
 | [`8af5e75`](https://github.com/decolua/9router/commit/8af5e75) | Adds Fish Audio as a text-to-speech provider. |
 | [`b04c03c`](https://github.com/decolua/9router/commit/b04c03c) | Adds the Alibaba Token Plan provider (`token-plan.ap-southeast-1`). |
 
-**[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 12.2k★.
+**[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 12.6k★.
 Fifteen pull requests merged.
 
 | PR | What it does |
@@ -167,6 +167,9 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 [#45](https://github.com/williamcachamwri/zalo-tg/pull/45) typing and seen indicators,
 [#46](https://github.com/williamcachamwri/zalo-tg/pull/46) message recall by reacting 🙈.
 
+**[tinyhumansai/tinymemory](https://github.com/tinyhumansai/tinymemory)** — agent memory engine, 6★.
+One pull request merged: [#108](https://github.com/tinyhumansai/tinymemory/pull/108) — both Composio request paths read the response body and threw it away (`let _ = response.bytes().await;`) before reporting a bare `HTTP 400`. Composio answers a failure with a structured error whose `message` and `suggested_fix` name the problem and how to correct it, so the one thing an operator needs was fetched and discarded. Found from the downstream report in [openhuman#5731](https://github.com/tinyhumansai/openhuman/issues/5731), where an entity-id mismatch surfaced as that bare status while the discarded body named the mismatch and the fix.
+
 ### Open for review
 
 | Project | | Pull request |
@@ -178,11 +181,10 @@ Five pull requests merged: [#42](https://github.com/williamcachamwri/zalo-tg/pul
 | [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39.3k★ | [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). |
 | [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 38.8k★ | 24 open. [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) — `rpcUrl` credentials were written to the log unredacted; [#5588](https://github.com/tinyhumansai/openhuman/pull/5588) scrubs credentials that carry no upper-case character, and [#5583](https://github.com/tinyhumansai/openhuman/pull/5583) adds a lint rule for the config boundary the frontend documents but never enforced. Then a run at the Claude Code stream reader, where three separate paths lose bytes: [#5718](https://github.com/tinyhumansai/openhuman/pull/5718) decodes stdout across chunk boundaries, [#5719](https://github.com/tinyhumansai/openhuman/pull/5719) bounds the stderr buffer without splitting a character, and [#5741](https://github.com/tinyhumansai/openhuman/pull/5741) reports the unparsable lines the parser deliberately keeps and the event mapper silently drops. Also [#5743](https://github.com/tinyhumansai/openhuman/pull/5743), where a failed chunk read was indistinguishable from a missing chunk, and [#5744](https://github.com/tinyhumansai/openhuman/pull/5744), which stops `subagentStop` from being reported as wired when nothing fires it. More recently [#5777](https://github.com/tinyhumansai/openhuman/pull/5777) flags the subagents `run_subagent` will not dispatch, [#5775](https://github.com/tinyhumansai/openhuman/pull/5775) stops the composer bridge cancelling IME compositions, [#5774](https://github.com/tinyhumansai/openhuman/pull/5774) drops both current-user caches on sign-out, and [#5747](https://github.com/tinyhumansai/openhuman/pull/5747) lets a profile named outside ASCII be saved. [#5791](https://github.com/tinyhumansai/openhuman/pull/5791) skips the input write-back while an IME composition is in flight, and [#5790](https://github.com/tinyhumansai/openhuman/pull/5790) launches `claude auth login` rather than the `claude login` the CLI no longer accepts. Newest: [#5795](https://github.com/tinyhumansai/openhuman/pull/5795) creates the auth profile store owner-only, [#5794](https://github.com/tinyhumansai/openhuman/pull/5794) reports Claude's structured error instead of an empty stderr, [#5816](https://github.com/tinyhumansai/openhuman/pull/5816) stops assistant roles being emitted on the CLI's stdin, [#5815](https://github.com/tinyhumansai/openhuman/pull/5815) removes an inert prompt flag, and [#5792](https://github.com/tinyhumansai/openhuman/pull/5792) / [#5793](https://github.com/tinyhumansai/openhuman/pull/5793) correct the README's Rust version and point Windows contributors at the script that works. Most recently [#5821](https://github.com/tinyhumansai/openhuman/pull/5821) appends the tool-policy boundary instead of prepending it, [#5817](https://github.com/tinyhumansai/openhuman/pull/5817) finishes the per-config MCP connection lookups, and [#5834](https://github.com/tinyhumansai/openhuman/pull/5834) stops the approval-gate tests racing the TTL they park under. |
 | [decolua/9router](https://github.com/decolua/9router) | 26.6k★ | 21 open, including [#3369](https://github.com/decolua/9router/pull/3369) recovering a tool result that arrived without an id, and [#3368](https://github.com/decolua/9router/pull/3368) stopping a hard-coded heap cap from overriding the operator. |
-| [h4ckf0r0day/obscura](https://github.com/h4ckf0r0day/obscura) | 22.4k★ | 5 open, all opened this week against the engine rather than around it. [#741](https://github.com/h4ckf0r0day/obscura/pull/741) implements `HTMLInputElement.indeterminate`, which the engine had nowhere at all, and clears it on activation the way HTML's legacy-pre-activation step says — including in the CDP mouse path, where the same logic is duplicated. [#742](https://github.com/h4ckf0r0day/obscura/pull/742) pins the ICU default locale: `navigator.language` and `Accept-Language` were pinned and `Intl` was not, so the browser disagreed with itself about where it was. [#744](https://github.com/h4ckf0r0day/obscura/pull/744) stops the load-delaying script pump discarding every pending script over an event-loop error that clears on the next tick. [#745](https://github.com/h4ckf0r0day/obscura/pull/745) drains a synthesized navigation before an MCP tool replies, so a submit click has actually left the process when the agent is told it happened. [#743](https://github.com/h4ckf0r0day/obscura/pull/743) is a one-line feature gate on a test that broke the no-render build. |
+| [h4ckf0r0day/obscura](https://github.com/h4ckf0r0day/obscura) | 22.4k★ | 7 open, all against the engine rather than around it. [#741](https://github.com/h4ckf0r0day/obscura/pull/741) implements `HTMLInputElement.indeterminate`, which the engine had nowhere at all, and clears it on activation the way HTML's legacy-pre-activation step says, including in the CDP mouse path where the same logic is duplicated. [#742](https://github.com/h4ckf0r0day/obscura/pull/742) pins the ICU default locale: `navigator.language` and `Accept-Language` were pinned and `Intl` was not, so the browser disagreed with itself about where it was. [#747](https://github.com/h4ckf0r0day/obscura/pull/747) is the one I found rather than picked up: a rejected promise came back from `Runtime.callFunctionOn` as an ordinary result, so `page.evaluate(() => Promise.reject(new Error('x')))` resolved to `{}` instead of throwing, and `Promise.reject({code: 42})` was byte-identical to resolving with it. [#744](https://github.com/h4ckf0r0day/obscura/pull/744) stops the load-delaying script pump discarding every pending script over an event-loop error that clears on the next tick. [#745](https://github.com/h4ckf0r0day/obscura/pull/745) drains a synthesized navigation before an MCP tool replies, so a submit click has actually left the process when the agent is told it happened. [#748](https://github.com/h4ckf0r0day/obscura/pull/748) stops the screenshot warm-up fetching every entry of a `@font-face` `src` list, which is a priority order rather than a set; the renderer already resolved it correctly and only the warm-up did not. [#743](https://github.com/h4ckf0r0day/obscura/pull/743) is a one-line feature gate on a test that broke the no-render build. |
 | [zenoamaro/react-quill](https://github.com/zenoamaro/react-quill) | 7k★ | [#1050](https://github.com/zenoamaro/react-quill/pull/1050) — replace `findDOMNode` with a ref so the editor works on React 19. |
 | [commandlineparser/commandline](https://github.com/commandlineparser/commandline) | 4.8k★ | [#953](https://github.com/commandlineparser/commandline/pull/953) — retarget the test project to net8.0 so the suite runs on current SDKs. |
 | [nestjsx/nestjs-typeorm-paginate](https://github.com/nestjsx/nestjs-typeorm-paginate) | 875★ | [#927](https://github.com/nestjsx/nestjs-typeorm-paginate/pull/927) — reject a limit of 0 instead of dividing `totalPages` by zero. |
-| [tinyhumansai/tinymemory](https://github.com/tinyhumansai/tinymemory) | 6★ | [#108](https://github.com/tinyhumansai/tinymemory/pull/108) — the Composio client discarded the error body, so a failed call surfaced as a bare status with nothing to act on. |
 
 ### How I work
 
