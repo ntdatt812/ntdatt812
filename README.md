@@ -2,9 +2,9 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-127_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-129_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
-[![Open](https://img.shields.io/badge/open_for_review-49_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-47_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -34,10 +34,10 @@ per-repository counts in both directions.
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **127** | Merged by maintainers of repos I don't own |
+| Pull requests merged | **129** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
-| Pull requests open | **49** | Awaiting maintainer review |
+| Pull requests open | **47** | Awaiting maintainer review |
 | Repositories | **19** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
@@ -126,7 +126,7 @@ Thirty-four pull requests merged.
 | [#13024](https://github.com/diegosouzapw/OmniRoute/pull/13024), [#13025](https://github.com/diegosouzapw/OmniRoute/pull/13025) | Two OpenAI-compatible provider entries, GreenPT and EURouter. Each claims only what could be checked: the endpoint's shape was verified live, the catalogue is left to the upstream rather than snapshotted, and no tool, vision or free-tier capability is declared that was not exercised (closes [#12986](https://github.com/diegosouzapw/OmniRoute/issues/12986), [#12985](https://github.com/diegosouzapw/OmniRoute/issues/12985)). |
 
 **[tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman)** — local-first AI agent desktop app, 39.6k★.
-Twenty-one pull requests merged.
+Twenty-three pull requests merged.
 
 | PR | What it does |
 | --- | --- |
@@ -136,6 +136,8 @@ Twenty-one pull requests merged.
 | [#5795](https://github.com/tinyhumansai/openhuman/pull/5795) | The auth profile store was written with default permissions, leaving provider credentials world-readable on a shared host. Created `0600`, asserted through `upsert_profile` rather than around it. |
 | [#5775](https://github.com/tinyhumansai/openhuman/pull/5775) | The composer bridge wrote back into the input while an IME composition was still open, cancelling it — so Vietnamese, Chinese and Japanese input lost characters mid-word. Guards on `isComposing`, and re-syncs on `compositionend` because WebKit emits no trailing input event. |
 | [#5588](https://github.com/tinyhumansai/openhuman/pull/5588) | The share-log scrubber keyed on an upper-case character, so a credential written entirely in lower case travelled through it untouched. |
+| [#6064](https://github.com/tinyhumansai/openhuman/pull/6064) | The sandbox-panel suite waited on `waitFor(mock was called)`, which already held on its first tick while the panel was still rendering its loading paragraph, so the assertions ran against a screen that had not loaded yet. Waits for the loaded panel instead. |
+| [#5980](https://github.com/tinyhumansai/openhuman/pull/5980) | The stderr buffer was truncated at a byte count, which cuts a multi-byte character in half. Backs up to the preceding character boundary. |
 | [#5769](https://github.com/tinyhumansai/openhuman/pull/5769) | Four `clear_memory` tests relied on another test having installed the process-global memory seams first, so they passed or failed according to which modules the coverage job filtered into the same binary. Each installs its own. |
 | [#5982](https://github.com/tinyhumansai/openhuman/pull/5982) | The UI-token lint compared a candidate against its prose-skip list using the path the OS handed it, which on Windows carries backslashes, so the skip never matched and English out of the translation catalogues was read as Tailwind classes. Every push from a Windows host failed on it. |
 | [#5822](https://github.com/tinyhumansai/openhuman/pull/5822) | Sign-out cleared one current-user cache and left the other, so the next reader could still be answered with the account that had just signed out. |
@@ -275,7 +277,7 @@ One pull request merged: [#108](https://github.com/tinyhumansai/tinymemory/pull/
 | [garrytan/gstack](https://github.com/garrytan/gstack) | 132.5k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
 | [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 132.2k★ | 8 open. [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476) and [#6479](https://github.com/farion1231/cc-switch/pull/6479); [#6928](https://github.com/farion1231/cc-switch/pull/6928), where the Codex live-write plan is decided by one notion of which provider is official and the switch that follows it by another, so the plan can promise a write the switch will not make; [#7010](https://github.com/farion1231/cc-switch/pull/7010), which points `session_summary` at the selected model profile; [#7187](https://github.com/farion1231/cc-switch/pull/7187), a zh-TW wording nit returned by the maintainer; and [#7193](https://github.com/farion1231/cc-switch/pull/7193), which drops `baseUrl` so the config survives TypeScript 7. |
 | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 93.7k★ | 2 open. [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), which names the `max_tokens` cap when it truncates an observation. |
-| [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 39.6k★ | 5 open. [#5794](https://github.com/tinyhumansai/openhuman/pull/5794) reports the CLI's structured error instead of an empty stderr, and [#5980](https://github.com/tinyhumansai/openhuman/pull/5980) bounds the stderr buffer without splitting a character. [#5834](https://github.com/tinyhumansai/openhuman/pull/5834) stops the approval-gate tests racing the TTL they park under. [#6064](https://github.com/tinyhumansai/openhuman/pull/6064) waits for the loaded sandbox panel rather than for the load to start — the suite's `waitFor(mock was called)` already held on its first tick, while the panel was still rendering its loading paragraph. [#6057](https://github.com/tinyhumansai/openhuman/pull/6057) drops `baseUrl` so `app/tsconfig` survives TypeScript 7. |
+| [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 39.6k★ | 3 open. [#5794](https://github.com/tinyhumansai/openhuman/pull/5794) reports the CLI's structured error instead of an empty stderr, and [#5834](https://github.com/tinyhumansai/openhuman/pull/5834) stops the approval-gate tests racing the TTL they park under. [#6057](https://github.com/tinyhumansai/openhuman/pull/6057) drops `baseUrl` so `app/tsconfig` survives TypeScript 7. |
 | [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39.4k★ | 2 open. [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). Also [#1133](https://github.com/drawdb-io/drawdb/pull/1133): Chrome reports a shift + wheel scroll on `deltaX` and leaves `deltaY` at zero, so the canvas pan branch added nothing and the diagram did not move. |
 | [soxoj/maigret](https://github.com/soxoj/maigret) | 37.4k★ | [#3096](https://github.com/soxoj/maigret/pull/3096) — the AI analysis writes model output straight to `sys.stdout`, which on a stock Windows install is cp1252, so a reply containing any character outside it ended the run with `UnicodeEncodeError` after the scan had already finished. |
 | [musistudio/claude-code-router](https://github.com/musistudio/claude-code-router) | 37.2k★ | 2 open. [#1771](https://github.com/musistudio/claude-code-router/pull/1771) — `tsconfig.node.json` is a composite project whose only `include` entry is a `.mjs` file, which is not an input unless `allowJs` is on, so the project has no inputs at all. Also [#1764](https://github.com/musistudio/claude-code-router/pull/1764), which drops `baseUrl` so the configs survive TypeScript 7. |
