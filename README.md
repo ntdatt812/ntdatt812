@@ -2,9 +2,9 @@
 
 ![Nguyen Thanh Dat — plumbing under AI developer tooling](./assets/header.svg)
 
-[![Landed](https://img.shields.io/badge/landed-131_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Landed](https://img.shields.io/badge/landed-133_PRs_%2B_6_commits-d97757?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Advisory](https://img.shields.io/badge/security_advisory-GHSA--w8pw--h853--frw2-b62324?style=flat-square&labelColor=161b22)](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)
-[![Open](https://img.shields.io/badge/open_for_review-44_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
+[![Open](https://img.shields.io/badge/open_for_review-42_PRs-8b949e?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Focus](https://img.shields.io/badge/focus-AI_developer_tooling-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 [![Location](https://img.shields.io/badge/Thanh_Hoa-Vietnam-adbac7?style=flat-square&labelColor=161b22)](https://github.com/ntdatt812)
 
@@ -23,7 +23,7 @@ carry a written reproduction instead.
 
 ### Contribution record
 
-Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-09-14**,
+Public data for [`ntdatt812`](https://github.com/ntdatt812), counted **2026-09-19**,
 covering the preceding 12 months. "Landed" means the change is in the upstream
 default branch of a repository I do not own — as a merged pull request, or as a
 commit the maintainer cherry-picked from one. Pull requests in my own repositories are
@@ -34,10 +34,10 @@ per-repository counts in both directions.
 
 | | Count | What it counts |
 | --- | ---: | --- |
-| Pull requests merged | **131** | Merged by maintainers of repos I don't own |
+| Pull requests merged | **133** | Merged by maintainers of repos I don't own |
 | Additional commits landed | **6** | In `decolua/9router` `master`; the PRs were closed and the work cherry-picked |
 | Security advisories | **1** | Published, credited as reporter |
-| Pull requests open | **44** | Awaiting maintainer review |
+| Pull requests open | **42** | Awaiting maintainer review |
 | Repositories | **19** | Third-party repos I've contributed to |
 
 I am not a maintainer of any of these projects, and I don't claim to be.
@@ -45,7 +45,7 @@ I am not a maintainer of any of these projects, and I don't claim to be.
 ### Security
 
 **[GHSA-w8pw-h853-frw2](https://github.com/jdx/mise/security/advisories/GHSA-w8pw-h853-frw2)**
-— [jdx/mise](https://github.com/jdx/mise), 33.8k★. Moderate, CVSS 4.0 **5.9**.
+— [jdx/mise](https://github.com/jdx/mise), 34.1k★. Moderate, CVSS 4.0 **5.9**.
 Affects `<= 2026.8.7`, patched in **2026.8.9**. Reported privately, published by the
 maintainer, credited as reporter.
 
@@ -68,7 +68,7 @@ Database. Both are for the maintainer and GitHub to decide.
 
 ### Landed
 
-**[github/spec-kit](https://github.com/github/spec-kit)** — spec-driven development toolkit, 135k★.
+**[github/spec-kit](https://github.com/github/spec-kit)** — spec-driven development toolkit, 137.8k★.
 Four pull requests merged.
 
 | PR | What it does |
@@ -78,10 +78,10 @@ Four pull requests merged.
 | [#4292](https://github.com/github/spec-kit/pull/4292) | A condition only takes `evaluate_expression`’s typed path when the whole string is one `{{ }}` block. Anything else is substituted into text and then coerced by `bool()`, so `{{ a }} and {{ b }}` renders `"False and False"` — a non-empty string, always true — and validates clean. All three validators already told authors a condition must be “a single complete `{{ }}` block”; nothing checked that it was one. |
 | [#4460](https://github.com/github/spec-kit/pull/4460) | The condition gate answered "does every operand resolve?" by re-parsing the expression itself — a second implementation of the evaluator's grammar, kept in step by hand. It now reports the leaves the evaluator actually reached, which was the proposal in [#4274](https://github.com/github/spec-kit/issues/4274). Review caught that the first version stopped collecting at the first placeholder a filter rejected, so every operand later in the chain vanished: `inputs.blob \| from_json \| contains(bogus)` recorded only `inputs.blob`, which the hand-written walk it replaced had never missed. The probe now carries on past a filter error, and only the probe does — an ordinary evaluation still raises. |
 
-**[farion1231/cc-switch](https://github.com/farion1231/cc-switch)** — provider switcher for Claude Code and Codex, 132.2k★.
+**[farion1231/cc-switch](https://github.com/farion1231/cc-switch)** — provider switcher for Claude Code and Codex, 133.6k★.
 One pull request merged: [#6768](https://github.com/farion1231/cc-switch/pull/6768) — two locale keys were missing from the Traditional Chinese catalogue, so the settings UI rendered their raw identifiers to the user instead of text. The fix takes the wording from the zh-TW strings already in the file rather than translating the zh-CN ones, so the register matches its neighbours.
 
-**[thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)** — persistent memory for Claude Code sessions, 93.7k★.
+**[thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)** — persistent memory for Claude Code sessions, 94.2k★.
 Four pull requests merged.
 
 | PR | What it does |
@@ -93,7 +93,7 @@ Four pull requests merged.
 
 Seven more were rebased onto `main` and squash-merged by the maintainer as pull requests of their own (#3995, #3996, #3998, #3999, #4000, #4001 and #4034), six of them keeping my co-author credit. They are not counted above.
 
-**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)** — AI gateway, 64.2k★.
+**[diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)** — AI gateway, 67.9k★.
 Thirty-four pull requests merged.
 
 | PR | What it does |
@@ -125,7 +125,7 @@ Thirty-four pull requests merged.
 | [#13087](https://github.com/diegosouzapw/OmniRoute/pull/13087) | The model health test probed a Responses-typed provider node on `/v1/chat/completions`. That route can answer 200 while carrying nothing a Chat Completions reader recognises, so those models were marked dead while the same model answered normally on `/v1/responses`. |
 | [#13024](https://github.com/diegosouzapw/OmniRoute/pull/13024), [#13025](https://github.com/diegosouzapw/OmniRoute/pull/13025) | Two OpenAI-compatible provider entries, GreenPT and EURouter. Each claims only what could be checked: the endpoint's shape was verified live, the catalogue is left to the upstream rather than snapshotted, and no tool, vision or free-tier capability is declared that was not exercised (closes [#12986](https://github.com/diegosouzapw/OmniRoute/issues/12986), [#12985](https://github.com/diegosouzapw/OmniRoute/issues/12985)). |
 
-**[tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman)** — local-first AI agent desktop app, 39.6k★.
+**[tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman)** — local-first AI agent desktop app, 39.9k★.
 Twenty-five pull requests merged.
 
 | PR | What it does |
@@ -156,14 +156,22 @@ Twenty-five pull requests merged.
 | [#5586](https://github.com/tinyhumansai/openhuman/pull/5586) | Four transport call sites logged `rpcUrl` verbatim while the redaction helper existed and was used elsewhere. `normalizeRpcUrl` deliberately preserves userinfo and query, so the URL can carry `user:pass@` and `?token=`. |
 | [#5583](https://github.com/tinyhumansai/openhuman/pull/5583) | `AGENTS.md` centralises frontend config and forbids reading `import.meta.env` elsewhere, a rule nothing enforced and one file had already broken. Adds the lint and fixes the violation. |
 
-**[can1357/oh-my-pi](https://github.com/can1357/oh-my-pi)** — coding agent with the IDE wired in, 30.5k★.
+**[musistudio/claude-code-router](https://github.com/musistudio/claude-code-router)** — routes Claude Code requests to other model providers, 37.3k★.
+Two pull requests merged.
+
+| PR | What it does |
+| --- | --- |
+| [#1771](https://github.com/musistudio/claude-code-router/pull/1771) | `tsconfig.node.json` is a composite project whose only `include` entry was a `.mjs` file, which is not an input unless `allowJs` is on, so the project had no inputs at all. It now covers `playwright.config.ts`, the one TypeScript file on the Node side, with its own `outDir` and `tsBuildInfoFile`. |
+| [#1764](https://github.com/musistudio/claude-code-router/pull/1764) | Drops `baseUrl` from both configs so they survive TypeScript 7. |
+
+**[can1357/oh-my-pi](https://github.com/can1357/oh-my-pi)** — coding agent with the IDE wired in, 31.8k★.
 One pull request merged.
 
 | PR | What it does |
 | --- | --- |
 | [#10794](https://github.com/can1357/oh-my-pi/pull/10794) | The commit-message normaliser ran `NFKD` to fold fractions, ligatures and fullwidth forms down to ASCII, and never recomposed. That also splits every accented letter into a base plus combining marks, and the summary is measured in UTF-8 bytes *after* that call — so Vietnamese inflated ~1.23x and Hangul ~2.4x, and a summary that fits was rejected for exceeding the limit. A 113-byte Vietnamese line was measured at 139 and threw `Summary exceeds 128 bytes`, uncaught, ending commit generation. Compatibility mappings never recompose, so one `NFC` pass restores the author's letters while keeping every fold. |
 
-**[decolua/9router](https://github.com/decolua/9router)** — LLM API router, 28.3k★.
+**[decolua/9router](https://github.com/decolua/9router)** — LLM API router, 29.3k★.
 Six commits in `master`.
 
 | Commit | What it does |
@@ -175,7 +183,7 @@ Six commits in `master`.
 | [`8af5e75`](https://github.com/decolua/9router/commit/8af5e75) | Adds Fish Audio as a text-to-speech provider. |
 | [`b04c03c`](https://github.com/decolua/9router/commit/b04c03c) | Adds the Alibaba Token Plan provider (`token-plan.ap-southeast-1`). |
 
-**[h4ckf0r0day/obscura](https://github.com/h4ckf0r0day/obscura)** — headless browser engine in Rust, 26.7k★.
+**[h4ckf0r0day/obscura](https://github.com/h4ckf0r0day/obscura)** — headless browser engine in Rust, 27.4k★.
 Seven pull requests merged.
 
 | PR | What it does |
@@ -188,7 +196,7 @@ Seven pull requests merged.
 | [#744](https://github.com/h4ckf0r0day/obscura/pull/744) | The load-delaying script pump discarded every pending script over an event-loop error that clears on the next tick. Narrowed to a test once the maintainer landed their own fix mid-review, since what remained missing was the coverage rather than the behaviour. |
 | [#887](https://github.com/h4ckf0r0day/obscura/pull/887) | A generic `parsererror` overwrote the diagnostic the well-formedness check had just produced, so a malformed XML document reported that it contained errors without naming one. |
 
-**[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 14.2k★.
+**[lidge-jun/opencodex](https://github.com/lidge-jun/opencodex)** — coding agent, 15.3k★.
 Fifteen pull requests merged.
 
 | PR | What it does |
@@ -246,7 +254,7 @@ Thirty-one pull requests merged.
 | [#3673](https://github.com/nicolargo/glances/pull/3673) | On Windows `psutil` reports the Win32 priority *class* in `nice`, not a nice value, and those numbers are neither ordered nor small (`32` is normal, `32768` is *above* normal), so the NI column showed a five-digit number in a 3-character field. Renders the six classes as the labels Windows itself uses, in the TUI and the WebUI, while the API keeps the raw value (closes [#3672](https://github.com/nicolargo/glances/issues/3672)). |
 | [#3670](https://github.com/nicolargo/glances/pull/3670) | Container network stats were read from a single interface, so a container attached to several networks under-reported its traffic by whatever the other interfaces carried. Aggregates over all of them. The issue was written by the maintainer as a specification rather than a bug report, so the patch follows it rather than re-deriving it (closes [#3669](https://github.com/nicolargo/glances/issues/3669)). |
 
-**[soxoj/maigret](https://github.com/soxoj/maigret)** — username OSINT across 3,000+ sites, 37.4k★.
+**[soxoj/maigret](https://github.com/soxoj/maigret)** — username OSINT across 3,000+ sites, 37.8k★.
 Two pull requests merged.
 
 | PR | What it does |
@@ -254,7 +262,7 @@ Two pull requests merged.
 | [#3056](https://github.com/soxoj/maigret/pull/3056) | The same crash on the paths that matter more than the banner: the `→` in the mutation notifications is in the source, and any profile field maigret extracts carries the script the page was written in. Both reach a bare `print()` mid-scan, so the run died after the network work was done. The `--ai` spinner needed the opposite treatment — encoding with replacement would leave a row of `?` spinning, so the frame set is chosen from what the stream can carry: a UTF-8 terminal keeps the braille, cp1252 gets `\|/-\` and still animates. |
 | [#3050](https://github.com/soxoj/maigret/pull/3050) | The startup banners carry `♥`, which the Windows ANSI codepage has no slot for, so on a default install maigret died with `UnicodeEncodeError` before it checked a single site. `--no-color` did not help — the character is in that branch too — and the PyInstaller build ignores `PYTHONIOENCODING`, so there was no way around it from outside. The guard catches the write rather than reconfiguring the stream, because colorama replaces `sys.stdout` with a wrapper that has no `reconfigure()`. |
 
-**[drawdb-io/drawdb](https://github.com/drawdb-io/drawdb)** — database diagram editor, 39.4k★.
+**[drawdb-io/drawdb](https://github.com/drawdb-io/drawdb)** — database diagram editor, 39.6k★.
 One pull request merged.
 
 | PR | What it does |
@@ -275,18 +283,17 @@ One pull request merged: [#108](https://github.com/tinyhumansai/tinymemory/pull/
 
 | Project | | Pull request |
 | --- | --- | --- |
-| [github/spec-kit](https://github.com/github/spec-kit) | 135k★ | 2 open. [#4520](https://github.com/github/spec-kit/pull/4520) — three fixes to how the command templates read task bookkeeping, consolidated at the maintainer's request: `implement` counted example checkboxes inside code fences as unfinished work; `taskstoissues` matched existing issues on a task ID that restarts at `T001` in every feature, so one feature's issues silently suppressed another's; and `converge` assessed the code while tasks were still open, re-appending that work as new gaps on every run — it now stops until `implement` has finished. Also [#4295](https://github.com/github/spec-kit/pull/4295), a `switch` expression that is never evaluated: the hole #4292 closed, one construct over. |
-| [garrytan/gstack](https://github.com/garrytan/gstack) | 132.5k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
-| [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 132.2k★ | 8 open. [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476) and [#6479](https://github.com/farion1231/cc-switch/pull/6479); [#6928](https://github.com/farion1231/cc-switch/pull/6928), where the Codex live-write plan is decided by one notion of which provider is official and the switch that follows it by another, so the plan can promise a write the switch will not make; [#7010](https://github.com/farion1231/cc-switch/pull/7010), which points `session_summary` at the selected model profile; [#7187](https://github.com/farion1231/cc-switch/pull/7187), a zh-TW wording nit returned by the maintainer; and [#7193](https://github.com/farion1231/cc-switch/pull/7193), which drops `baseUrl` so the config survives TypeScript 7. |
-| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 93.7k★ | 2 open. [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice, and nothing dedupes it before it becomes the request's `messages` array, so the assistant half of every later request was double-billed. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), which names the `max_tokens` cap when it truncates an observation. |
-| [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39.4k★ | 2 open. [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). Also [#1133](https://github.com/drawdb-io/drawdb/pull/1133): Chrome reports a shift + wheel scroll on `deltaX` and leaves `deltaY` at zero, so the canvas pan branch added nothing and the diagram did not move. |
-| [soxoj/maigret](https://github.com/soxoj/maigret) | 37.4k★ | [#3096](https://github.com/soxoj/maigret/pull/3096) — the AI analysis writes model output straight to `sys.stdout`, which on a stock Windows install is cp1252, so a reply containing any character outside it ended the run with `UnicodeEncodeError` after the scan had already finished. |
-| [musistudio/claude-code-router](https://github.com/musistudio/claude-code-router) | 37.2k★ | 2 open. [#1771](https://github.com/musistudio/claude-code-router/pull/1771) — `tsconfig.node.json` is a composite project whose only `include` entry is a `.mjs` file, which is not an input unless `allowJs` is on, so the project has no inputs at all. Also [#1764](https://github.com/musistudio/claude-code-router/pull/1764), which drops `baseUrl` so the configs survive TypeScript 7. |
-| [decolua/9router](https://github.com/decolua/9router) | 28.3k★ | 19 open. This repository takes a pull request on the day it is opened or not at all, so twenty-three older ones were consolidated by area into five: [#3878](https://github.com/decolua/9router/pull/3878) (six format-conversion defects), [#3879](https://github.com/decolua/9router/pull/3879), [#3880](https://github.com/decolua/9router/pull/3880), [#3881](https://github.com/decolua/9router/pull/3881) and [#3882](https://github.com/decolua/9router/pull/3882) — each fix still its own commit, so any one can be dropped. Then [#3876](https://github.com/decolua/9router/pull/3876), deleting an access-control list nothing enforced; [#3873](https://github.com/decolua/9router/pull/3873), where a combo reports one model's status beside another model's message; [#3872](https://github.com/decolua/9router/pull/3872); [#3857](https://github.com/decolua/9router/pull/3857); [#3856](https://github.com/decolua/9router/pull/3856); [#3652](https://github.com/decolua/9router/pull/3652); [#3342](https://github.com/decolua/9router/pull/3342); and [#3317](https://github.com/decolua/9router/pull/3317). Newest are three found by reading rather than from the tracker: [#3907](https://github.com/decolua/9router/pull/3907), which adds the `cancel` callback a client hanging up mid-stream needs before the turn is recorded at all; [#3910](https://github.com/decolua/9router/pull/3910), where the cooldown countdown targets a lock that has already expired, so it renders nothing exactly when a connection holds more than one; and [#3911](https://github.com/decolua/9router/pull/3911), where the "slow when healthy" half of a documented polling design was never written, so the probe that keeps the UI honest switches off the moment the UI goes green. [#3909](https://github.com/decolua/9router/pull/3909) gives combo entries the `capabilities` object every other model declares. [#3913](https://github.com/decolua/9router/pull/3913) came out of an issue whose diagnosis did not hold: the 2000-token margin a client is shown is deliberate, but the estimated-usage path stored that same buffered object as the value it logs, so every turn a provider left without usage was recorded 2000 input tokens too high -- in the direction that inflates a quota. [#3917](https://github.com/decolua/9router/pull/3917) is a tidy-up rather than a fix: the quota colour policy was written out four times, agreeing by luck, so one edit would have shown a model green in the table and yellow in the bar above it. |
-| [h4ckf0r0day/obscura](https://github.com/h4ckf0r0day/obscura) | 26.7k★ | 4 open, all against the engine rather than around it. [#874](https://github.com/h4ckf0r0day/obscura/pull/874) decodes the base64 `postData` a `continueRequest` carries. [#778](https://github.com/h4ckf0r0day/obscura/pull/778) honours `acceptLanguage` on both spellings of `setUserAgentOverride` — the `Emulation` one was acknowledged without being applied. [#780](https://github.com/h4ckf0r0day/obscura/pull/780) reports a primitive's own value through CDP instead of its description string. [#782](https://github.com/h4ckf0r0day/obscura/pull/782) pins the shape of a `blob:` URL: the fix landed from another contributor while this was open, and its test asserts only the `blob:` scheme, which the form the issue was filed about also satisfies. |
+| [github/spec-kit](https://github.com/github/spec-kit) | 137.8k★ | 2 open. [#4520](https://github.com/github/spec-kit/pull/4520) — three fixes to how the command templates read task bookkeeping, consolidated at the maintainer's request: `implement` counted example checkboxes inside code fences as unfinished work; `taskstoissues` matched existing issues on a task ID that restarts at `T001` in every feature, so one feature's issues silently suppressed another's; and `converge` assessed the code while tasks were still open, re-appending that work as new gaps on every run — it now stops until `implement` has finished. Also [#4295](https://github.com/github/spec-kit/pull/4295), a `switch` expression that is never evaluated: the hole #4292 closed, one construct over. |
+| [garrytan/gstack](https://github.com/garrytan/gstack) | 133.6k★ | [#2636](https://github.com/garrytan/gstack/pull/2636) — the `GITHUB_` prefix admitted operator credentials into hermetic child environments. |
+| [farion1231/cc-switch](https://github.com/farion1231/cc-switch) | 133.6k★ | 8 open. [#6477](https://github.com/farion1231/cc-switch/pull/6477) — Codex Desktop's `[desktop]` config table was wiped on every provider switch. Also [#6474](https://github.com/farion1231/cc-switch/pull/6474), [#6476](https://github.com/farion1231/cc-switch/pull/6476) and [#6479](https://github.com/farion1231/cc-switch/pull/6479); [#6928](https://github.com/farion1231/cc-switch/pull/6928), where the Codex live-write plan is decided by one notion of which provider is official and the switch that follows it by another, so the plan can promise a write the switch will not make; [#7010](https://github.com/farion1231/cc-switch/pull/7010), which points `session_summary` at the selected model profile; [#7187](https://github.com/farion1231/cc-switch/pull/7187), a zh-TW wording nit returned by the maintainer; and [#7193](https://github.com/farion1231/cc-switch/pull/7193), which drops `baseUrl` so the config survives TypeScript 7. |
+| [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | 94.2k★ | 2 open. [#3619](https://github.com/thedotmack/claude-mem/pull/3619) — the provider recorded every assistant reply into the conversation history twice. That fix is now upstream, so this pull request adds the tests `main` still lacks, for the summary turn and for an empty reply that is not forwarded. Also [#3620](https://github.com/thedotmack/claude-mem/pull/3620), which warns when a reply is cut off at the output-token limit and names the cap, instead of leaving only a parse failure behind. |
+| [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb) | 39.6k★ | 2 open. [#1115](https://github.com/drawdb-io/drawdb/pull/1115) — makes a real `pg_dump` file importable (closes [#852](https://github.com/drawdb-io/drawdb/issues/852)). Also [#1133](https://github.com/drawdb-io/drawdb/pull/1133): Chrome reports a shift + wheel scroll on `deltaX` and leaves `deltaY` at zero, so the canvas pan branch added nothing and the diagram did not move. |
+| [soxoj/maigret](https://github.com/soxoj/maigret) | 37.8k★ | [#3096](https://github.com/soxoj/maigret/pull/3096) — the AI analysis writes model output straight to `sys.stdout`, which on a stock Windows install is cp1252, so a reply containing any character outside it ended the run with `UnicodeEncodeError` after the scan had already finished. |
+| [decolua/9router](https://github.com/decolua/9router) | 29.3k★ | 19 open. This repository takes a pull request on the day it is opened or not at all, so twenty-three older ones were consolidated by area into five: [#3878](https://github.com/decolua/9router/pull/3878) (six format-conversion defects), [#3879](https://github.com/decolua/9router/pull/3879), [#3880](https://github.com/decolua/9router/pull/3880), [#3881](https://github.com/decolua/9router/pull/3881) and [#3882](https://github.com/decolua/9router/pull/3882) — each fix still its own commit, so any one can be dropped. Then [#3876](https://github.com/decolua/9router/pull/3876), deleting an access-control list nothing enforced; [#3873](https://github.com/decolua/9router/pull/3873), where a combo reports one model's status beside another model's message; [#3872](https://github.com/decolua/9router/pull/3872); [#3857](https://github.com/decolua/9router/pull/3857); [#3856](https://github.com/decolua/9router/pull/3856); [#3652](https://github.com/decolua/9router/pull/3652); [#3342](https://github.com/decolua/9router/pull/3342); and [#3317](https://github.com/decolua/9router/pull/3317). Newest are three found by reading rather than from the tracker: [#3907](https://github.com/decolua/9router/pull/3907), which adds the `cancel` callback a client hanging up mid-stream needs before the turn is recorded at all; [#3910](https://github.com/decolua/9router/pull/3910), where the cooldown countdown targets a lock that has already expired, so it renders nothing exactly when a connection holds more than one; and [#3911](https://github.com/decolua/9router/pull/3911), where the "slow when healthy" half of a documented polling design was never written, so the probe that keeps the UI honest switches off the moment the UI goes green. [#3909](https://github.com/decolua/9router/pull/3909) gives combo entries the `capabilities` object every other model declares. [#3913](https://github.com/decolua/9router/pull/3913) came out of an issue whose diagnosis did not hold: the 2000-token margin a client is shown is deliberate, but the estimated-usage path stored that same buffered object as the value it logs, so every turn a provider left without usage was recorded 2000 input tokens too high -- in the direction that inflates a quota. [#3917](https://github.com/decolua/9router/pull/3917) is a tidy-up rather than a fix: the quota colour policy was written out four times, agreeing by luck, so one edit would have shown a model green in the table and yellow in the bar above it. |
+| [h4ckf0r0day/obscura](https://github.com/h4ckf0r0day/obscura) | 27.4k★ | 4 open, all against the engine rather than around it. [#874](https://github.com/h4ckf0r0day/obscura/pull/874) decodes the base64 `postData` a `continueRequest` carries. [#778](https://github.com/h4ckf0r0day/obscura/pull/778) honours `acceptLanguage` on both spellings of `setUserAgentOverride` — the `Emulation` one was acknowledged without being applied. [#780](https://github.com/h4ckf0r0day/obscura/pull/780) reports a primitive's own value through CDP instead of its description string. [#782](https://github.com/h4ckf0r0day/obscura/pull/782) pins the shape of a `blob:` URL: the fix landed from another contributor while this was open, and its test asserts only the `blob:` scheme, which the form the issue was filed about also satisfies. |
 | [zenoamaro/react-quill](https://github.com/zenoamaro/react-quill) | 7k★ | [#1050](https://github.com/zenoamaro/react-quill/pull/1050) — replace `findDOMNode` with a ref so the editor works on React 19. |
 | [commandlineparser/commandline](https://github.com/commandlineparser/commandline) | 4.8k★ | [#953](https://github.com/commandlineparser/commandline/pull/953) — retarget the test project to net8.0 so the suite runs on current SDKs. |
-| [nestjsx/nestjs-typeorm-paginate](https://github.com/nestjsx/nestjs-typeorm-paginate) | 875★ | [#927](https://github.com/nestjsx/nestjs-typeorm-paginate/pull/927) — reject a limit of 0 instead of dividing `totalPages` by zero. |
+| [nestjsx/nestjs-typeorm-paginate](https://github.com/nestjsx/nestjs-typeorm-paginate) | 876★ | [#927](https://github.com/nestjsx/nestjs-typeorm-paginate/pull/927) — reject a limit of 0 instead of dividing `totalPages` by zero. |
 
 ### How I work
 
